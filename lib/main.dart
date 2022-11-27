@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_app/models/utils.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -27,7 +32,7 @@ class MyApp extends StatelessWidget {
       name: 'home',
       builder: (context, state) => const HomePage(),
     )
-  ], initialLocation: '/login');
+  ], initialLocation: '/home');
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +41,10 @@ class MyApp extends StatelessWidget {
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
       routerDelegate: router.routerDelegate,
+      scaffoldMessengerKey: Utils.messengerKey,
       theme: ThemeData(
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-          primaryColor: Color(0xff4169e1)),
+          primaryColor: const Color(0xff4169e1)),
     );
   }
 }
