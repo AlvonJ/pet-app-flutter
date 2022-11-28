@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       name: 'home',
       builder: (context, state) => const HomePage(),
     )
-  ], initialLocation: '/home');
+  ], initialLocation: '/login');
 
   @override
   Widget build(BuildContext context) {
