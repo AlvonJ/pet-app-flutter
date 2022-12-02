@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
+import 'package:pet_app/widgets/sub_title.dart';
+import 'package:pet_app/widgets/what_new.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -213,23 +216,9 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 22),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Near You",
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text("See all",
-                          style: TextStyle(color: Color(0xff6f00ff))),
-                    )
-                  ],
-                ),
+                const SubTitle(title: "Near You"),
+
+                // Near You
                 Container(
                   width: double.infinity,
                   height: 350,
@@ -299,7 +288,7 @@ class HomePage extends StatelessWidget {
                                         ),
                                       )
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             )
@@ -309,6 +298,28 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+
+                //whats new
+                const SubTitle(title: "What's New ?"),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(children: const [
+                    WhatsNew(
+                      title: 'How To Adopt a Dog',
+                      asset: AssetImage('assets/dog_glass.png'),
+                    ),
+                    SizedBox(width: 20),
+                    WhatsNew(
+                      title: 'How To Adopt a Cat',
+                      asset: AssetImage('assets/cat.png'),
+                    ),
+                  ]),
+                ),
+                const SizedBox(height: 33),
+                const DonateHere(),
+                const SizedBox(height: 33),
+
+                // batas listview
               ],
             ),
           )

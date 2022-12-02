@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_app/models/utils.dart';
+import 'package:pet_app/pages/article_detail.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
@@ -28,11 +29,17 @@ class MyApp extends StatelessWidget {
       builder: (context, state) => const SignUp(),
     ),
     GoRoute(
-      path: '/home',
-      name: 'home',
-      builder: (context, state) => const HomePage(),
-    )
-  ], initialLocation: '/home');
+        path: '/home',
+        name: 'home',
+        builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+            path: 'articleDetail',
+            name: 'articleDetail',
+            builder: (context, state) => const ArticleDetail(),
+          ),
+        ])
+  ], initialLocation: '/home/articleDetail');
 
   @override
   Widget build(BuildContext context) {
