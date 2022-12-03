@@ -209,7 +209,7 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                               Image.asset(
-                                'assets/header.png',
+                                './assets/home/header.png',
                                 fit: BoxFit.cover,
                                 height: 80,
                               )
@@ -229,14 +229,14 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     children: [
                       CardItem(
-                        pathImage: './assets/dog.png',
+                        pathImage: './assets/home/dog.png',
                         name: 'Roger',
                         location: 'Batununggal (2.5 km)',
                         gender: Gender.male,
                       ),
                       SizedBox(width: 15),
                       CardItem(
-                        pathImage: './assets/cat2.png',
+                        pathImage: './assets/home/cat2.png',
                         name: 'Samantha',
                         location: 'Pasteur (5 km)',
                         gender: Gender.female,
@@ -253,12 +253,12 @@ class HomePage extends StatelessWidget {
                   child: Row(children: const [
                     WhatsNew(
                       title: 'How To Adopt a Dog',
-                      pathImage: './assets/dog_glass.png',
+                      pathImage: './assets/home/dog_glass.png',
                     ),
                     SizedBox(width: 20),
                     WhatsNew(
                       title: 'How To Adopt a Cat',
-                      pathImage: './assets/cat.png',
+                      pathImage: './assets/home/cat.png',
                     ),
                   ]),
                 ),
