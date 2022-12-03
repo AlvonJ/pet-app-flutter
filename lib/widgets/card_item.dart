@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+enum Gender { male, female }
+
 class CardItem extends StatelessWidget {
   final String pathImage;
   final String name;
   final String location;
+  final Gender gender;
 
   const CardItem(
       {super.key,
       required this.pathImage,
       required this.name,
-      required this.location});
+      required this.location,
+      required this.gender});
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +45,22 @@ class CardItem extends StatelessWidget {
                           fontSize: 20),
                     ),
                     Container(
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).primaryColor.withOpacity(0.3),
-                      ),
-                      child: Icon(
-                        Icons.male,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    )
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: gender == Gender.male
+                              ? Theme.of(context).primaryColor.withOpacity(0.3)
+                              : Colors.pink.withOpacity(0.3),
+                        ),
+                        child: gender == Gender.male
+                            ? Icon(
+                                Icons.male,
+                                color: Theme.of(context).primaryColor,
+                              )
+                            : Icon(
+                                Icons.female,
+                                color: Colors.pink,
+                              ))
                   ],
                 ),
                 const SizedBox(height: 5),

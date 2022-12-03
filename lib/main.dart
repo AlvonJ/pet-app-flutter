@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => const ArticleDetail(),
           ),
         ])
-  ], initialLocation: '/home/articleDetail');
+  ], initialLocation: '/home');
 
   @override
   Widget build(BuildContext context) {

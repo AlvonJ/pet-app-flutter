@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_app/widgets/card_item.dart';
 import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
 import 'package:pet_app/widgets/sub_title.dart';
@@ -225,79 +226,23 @@ class HomePage extends StatelessWidget {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 250,
-                              width: 300,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: const DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage('./assets/dog.png'))),
-                            ),
-                            Container(
-                              width: 300,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 15),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Roger",
-                                        style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.65),
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 20),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.all(4),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Theme.of(context)
-                                              .primaryColor
-                                              .withOpacity(0.3),
-                                        ),
-                                        child: Icon(
-                                          Icons.male,
-                                          color: Theme.of(context).primaryColor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.location_pin,
-                                        color: Colors.black.withOpacity(0.5),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Text(
-                                        "Batununggal (2.5 km)",
-                                        style: TextStyle(
-                                          color: Colors.black.withOpacity(0.5),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                      CardItem(
+                        pathImage: './assets/dog.png',
+                        name: 'Roger',
+                        location: 'Batununggal (2.5 km)',
+                        gender: Gender.male,
+                      ),
+                      SizedBox(width: 15),
+                      CardItem(
+                        pathImage: './assets/cat2.png',
+                        name: 'Samantha',
+                        location: 'Pasteur (5 km)',
+                        gender: Gender.female,
                       ),
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
 
                 //whats new
                 const SubTitle(title: "What's New ?"),
@@ -315,7 +260,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ]),
                 ),
-                const SizedBox(height: 33),
+                const SizedBox(height: 50),
                 const DonateHere(),
                 const SizedBox(height: 33),
 
