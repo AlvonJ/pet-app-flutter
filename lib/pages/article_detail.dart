@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/video_top.dart';
 
 class ArticleDetail extends StatelessWidget {
@@ -10,7 +11,7 @@ class ArticleDetail extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: const IconThemeData(color: Color(0xff6f00ff))),
+          iconTheme: const IconThemeData(color: AppColors.secondaryColor)),
       body: ListView(children: [VideoTop()]),
     );
   }

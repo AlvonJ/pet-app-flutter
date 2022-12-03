@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 
 class SignUp extends StatefulWidget {
@@ -29,9 +30,9 @@ class _SignUpState extends State<SignUp> {
         MaterialState.focused,
       };
       if (states.any(interactiveStates.contains)) {
-        return const Color(0xff4169E1);
+        return AppColors.mainColor;
       }
-      return const Color(0xff6f00ff);
+      return AppColors.secondaryColor;
     }
 
     return Container(
@@ -57,7 +58,7 @@ class _SignUpState extends State<SignUp> {
                       Text(
                         "Sign Up",
                         style: TextStyle(
-                            color: Color(0xff4169e1),
+                            color: AppColors.mainColor,
                             fontSize: 26,
                             fontWeight: FontWeight.bold),
                       )
@@ -81,7 +82,7 @@ class _SignUpState extends State<SignUp> {
                             vertical: 5, horizontal: 15),
                         enabledBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(color: Color(0xff4169E1)),
+                                const BorderSide(color: AppColors.mainColor),
                             borderRadius: BorderRadius.circular(10)),
                         focusedBorder: OutlineInputBorder(
                             borderSide:
@@ -119,7 +120,7 @@ class _SignUpState extends State<SignUp> {
                               vertical: 5, horizontal: 15),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  const BorderSide(color: Color(0xff4169E1)),
+                                  const BorderSide(color: AppColors.mainColor),
                               borderRadius: BorderRadius.circular(10)),
                           focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -137,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                           labelStyle: const TextStyle(fontSize: 14),
                           suffixIcon: const Icon(
                             Icons.remove_red_eye,
-                            color: Color(0xff6f00ff),
+                            color: AppColors.secondaryColor,
                           )),
                     ),
                   ),
@@ -161,7 +162,7 @@ class _SignUpState extends State<SignUp> {
                               vertical: 5, horizontal: 15),
                           enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  const BorderSide(color: Color(0xff4169E1)),
+                                  const BorderSide(color: AppColors.mainColor),
                               borderRadius: BorderRadius.circular(10)),
                           focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -179,7 +180,7 @@ class _SignUpState extends State<SignUp> {
                           labelStyle: const TextStyle(fontSize: 14),
                           suffixIcon: const Icon(
                             Icons.remove_red_eye,
-                            color: Color(0xff6f00ff),
+                            color: AppColors.secondaryColor,
                           )),
                     ),
                   ),
@@ -207,7 +208,7 @@ class _SignUpState extends State<SignUp> {
                             const Text(
                               "I agree to the ",
                               style: TextStyle(
-                                  color: Color(0xff4169E1), fontSize: 11),
+                                  color: AppColors.mainColor, fontSize: 11),
                             ),
                             TextButton(
                               style: TextButton.styleFrom(
@@ -216,7 +217,7 @@ class _SignUpState extends State<SignUp> {
                               child: const Text(
                                 "Terms & Conditions ",
                                 style: TextStyle(
-                                  color: Color(0xff6f00ff),
+                                  color: AppColors.secondaryColor,
                                   fontSize: 10,
                                 ),
                               ),
@@ -224,7 +225,7 @@ class _SignUpState extends State<SignUp> {
                             const Text(
                               "and ",
                               style: TextStyle(
-                                  color: Color(0xff4169E1), fontSize: 12),
+                                  color: AppColors.mainColor, fontSize: 12),
                             ),
                             TextButton(
                               style: TextButton.styleFrom(
@@ -233,7 +234,7 @@ class _SignUpState extends State<SignUp> {
                               child: const Text(
                                 "Privacy & Policy",
                                 style: TextStyle(
-                                  color: Color(0xff6f00ff),
+                                  color: AppColors.secondaryColor,
                                   fontSize: 12,
                                 ),
                               ),
@@ -278,7 +279,7 @@ class _SignUpState extends State<SignUp> {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: const Color(0xff4169E1)),
+                            backgroundColor: AppColors.mainColor),
                         child: const Text(
                           "Sign Up",
                           style: TextStyle(
@@ -293,7 +294,7 @@ class _SignUpState extends State<SignUp> {
                       const Text(
                         "Already have an account? ",
                         style:
-                            TextStyle(color: Color(0xff4169E1), fontSize: 14),
+                            TextStyle(color: AppColors.mainColor, fontSize: 14),
                       ),
                       TextButton(
                         onPressed: () {
@@ -302,7 +303,7 @@ class _SignUpState extends State<SignUp> {
                         child: const Text(
                           "Sign In Here",
                           style: TextStyle(
-                              color: Color(0xff6f00ff),
+                              color: AppColors.secondaryColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
@@ -328,7 +329,7 @@ class _SignUpState extends State<SignUp> {
                                 'Or sign Up with ',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    color: Color(0xff4169E1),
+                                    color: AppColors.mainColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -348,7 +349,7 @@ class _SignUpState extends State<SignUp> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    backgroundColor: const Color(0xff4169E1),
+                                    backgroundColor: AppColors.mainColor,
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 20)),
                                 onPressed: () {},
@@ -365,7 +366,7 @@ class _SignUpState extends State<SignUp> {
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      backgroundColor: const Color(0xff4169E1),
+                                      backgroundColor: AppColors.mainColor,
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 15, vertical: 20)),
                                   onPressed: () {},
@@ -381,7 +382,7 @@ class _SignUpState extends State<SignUp> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    backgroundColor: const Color(0xff4169E1),
+                                    backgroundColor: AppColors.mainColor,
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 20)),
                                 onPressed: () {},

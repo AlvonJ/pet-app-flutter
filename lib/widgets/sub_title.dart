@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/models/app_colors.dart';
 
 class SubTitle extends StatelessWidget {
   final String title;
@@ -18,8 +19,8 @@ class SubTitle extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {},
-          child:
-              const Text("See all", style: TextStyle(color: Color(0xff6f00ff))),
+          child: const Text("See all",
+              style: TextStyle(color: AppColors.secondaryColor)),
         )
       ],
     );

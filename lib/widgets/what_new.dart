@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pet_app/models/app_colors.dart';
 
 class WhatsNew extends StatelessWidget {
   final String title;
-  final AssetImage asset;
+  final String pathImage;
 
-  const WhatsNew({super.key, required this.title, required this.asset});
+  const WhatsNew({super.key, required this.title, required this.pathImage});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class WhatsNew extends StatelessWidget {
                   title,
                   textAlign: TextAlign.left,
                   style: const TextStyle(
-                      color: Color(0xff6f00ff),
+                      color: AppColors.secondaryColor,
                       fontWeight: FontWeight.w700,
                       fontSize: 15),
                 ),
@@ -56,7 +57,8 @@ class WhatsNew extends StatelessWidget {
                   height: 172,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    image: DecorationImage(image: asset, fit: BoxFit.fitWidth),
+                    image: DecorationImage(
+                        image: AssetImage(pathImage), fit: BoxFit.fitWidth),
                   ))),
           Positioned(
               top: 209,
@@ -83,7 +85,7 @@ class WhatsNew extends StatelessWidget {
                               child: Stack(children: const [
                                 Icon(
                                   Icons.chevron_right_rounded,
-                                  color: Color(0xff6f00ff),
+                                  color: AppColors.secondaryColor,
                                 )
                               ]))),
                       const Positioned(
@@ -93,7 +95,7 @@ class WhatsNew extends StatelessWidget {
                             'Read More',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                              color: Color(0xff6f00ff),
+                              color: AppColors.secondaryColor,
                               fontSize: 10,
                             ),
                           )),

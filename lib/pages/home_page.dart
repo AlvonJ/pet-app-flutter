@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/card_item.dart';
 import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          iconTheme: const IconThemeData(color: Color(0xff6f00ff)),
+          iconTheme: const IconThemeData(color: AppColors.secondaryColor),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
                     iconSize: 30,
                     icon: const Icon(
                       Icons.notifications_outlined,
-                      color: Color(0xff6f00ff),
+                      color: AppColors.secondaryColor,
                     ),
                   ),
                   const SizedBox(
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget {
         ),
         drawer: SafeArea(
           child: Drawer(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: AppColors.mainColor,
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
@@ -130,7 +131,7 @@ class HomePage extends StatelessWidget {
                 //       iconSize: 30,
                 //       icon: const Icon(
                 //         Icons.notifications_outlined,
-                //         color: Color(0xff6f00ff),
+                //         color: AppColors.secondaryColor,
                 //       ),
                 //     ),
                 //     const SizedBox(
@@ -155,10 +156,11 @@ class HomePage extends StatelessWidget {
                         contentPadding: EdgeInsets.symmetric(horizontal: 16),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Color(0xff6f00ff))),
+                            borderSide:
+                                BorderSide(color: AppColors.secondaryColor)),
                         hintText: "Search..",
-                        hintStyle:
-                            TextStyle(color: Color(0xff6f00ff), fontSize: 16),
+                        hintStyle: TextStyle(
+                            color: AppColors.secondaryColor, fontSize: 16),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -178,7 +180,7 @@ class HomePage extends StatelessWidget {
                             blurRadius: 2)
                       ],
                       borderRadius: BorderRadius.circular(10),
-                      color: Theme.of(context).primaryColor),
+                      color: AppColors.mainColor),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -251,12 +253,12 @@ class HomePage extends StatelessWidget {
                   child: Row(children: const [
                     WhatsNew(
                       title: 'How To Adopt a Dog',
-                      asset: AssetImage('assets/dog_glass.png'),
+                      pathImage: './assets/dog_glass.png',
                     ),
                     SizedBox(width: 20),
                     WhatsNew(
                       title: 'How To Adopt a Cat',
-                      asset: AssetImage('assets/cat.png'),
+                      pathImage: './assets/cat.png',
                     ),
                   ]),
                 ),

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 
 class LoginPage extends StatefulWidget {
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelStyle: const TextStyle(fontSize: 14),
                           suffixIcon: const Icon(
                             Icons.remove_red_eye,
-                            color: Color(0xff6f00ff),
+                            color: AppColors.secondaryColor,
                           )),
                     ),
                   ),
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             'Forgot Password?',
                             textAlign: TextAlign.end,
                             style: TextStyle(
-                                color: Color(0xff6f00ff), fontSize: 12),
+                                color: AppColors.secondaryColor, fontSize: 12),
                           ),
                         )
                       ],
@@ -158,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                               barrierDismissible: false,
                               builder: (context) => Center(
                                       child: CircularProgressIndicator(
-                                    color: Theme.of(context).primaryColor,
+                                    color: AppColors.mainColor,
                                   )));
                           try {
                             await FirebaseAuth.instance
@@ -202,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           "Sign Up Here",
                           style: TextStyle(
-                              color: Color(0xff6f00ff),
+                              color: AppColors.secondaryColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),

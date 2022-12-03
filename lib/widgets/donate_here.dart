@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/models/app_colors.dart';
 
 class DonateHere extends StatelessWidget {
   const DonateHere({super.key});
@@ -87,7 +88,7 @@ class DonateHere extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     color: Colors.white,
                     border: Border.all(
-                      color: const Color(0xff6f00ff),
+                      color: AppColors.secondaryColor,
                       width: 2,
                     ),
                   ),
@@ -97,8 +98,8 @@ class DonateHere extends StatelessWidget {
                       child: const Text(
                         'Donate Here',
                         textAlign: TextAlign.left,
-                        style:
-                            TextStyle(color: Color(0xff6f00ff), fontSize: 15),
+                        style: TextStyle(
+                            color: AppColors.secondaryColor, fontSize: 15),
                       ),
                     ),
                   ),
