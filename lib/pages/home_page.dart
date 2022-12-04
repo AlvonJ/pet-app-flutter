@@ -18,7 +18,9 @@ class HomePage extends StatelessWidget {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("./assets/template.png"), fit: BoxFit.cover)),
+        image: AssetImage("./assets/template.png"),
+        fit: BoxFit.cover,
+      )),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -233,6 +235,9 @@ class HomePage extends StatelessWidget {
                         name: 'Roger',
                         location: 'Batununggal (2.5 km)',
                         gender: Gender.male,
+                        onTap: () {
+                          context.goNamed('adoption-detail');
+                        },
                       ),
                       SizedBox(width: 15),
                       CardItem(
@@ -240,6 +245,9 @@ class HomePage extends StatelessWidget {
                         name: 'Samantha',
                         location: 'Pasteur (5 km)',
                         gender: Gender.female,
+                        onTap: () {
+                          context.goNamed('adoption-detail');
+                        },
                       ),
                     ],
                   ),
