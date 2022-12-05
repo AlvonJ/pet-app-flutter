@@ -119,7 +119,7 @@ class ArticleDetailPage extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(6)),
                   child: IconButton(
                     onPressed: () {
-                      context.goNamed('home');
+                      context.goNamed('family');
                     },
                     icon: const Icon(
                       Icons.arrow_back_outlined,
@@ -127,7 +127,7 @@ class ArticleDetailPage extends StatelessWidget {
                       size: 30,
                     ),
                   ),
-                ))
+                )),
           ]),
         ),
       ),

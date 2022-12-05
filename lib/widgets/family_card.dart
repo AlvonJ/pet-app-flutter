@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 
-class CardArticle extends StatelessWidget {
+class FamilyCard extends StatelessWidget {
   final String title;
   final String pathImage;
 
-  const CardArticle({super.key, required this.title, required this.pathImage});
+  const FamilyCard({super.key, required this.title, required this.pathImage});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-          width: 306,
+          width: 345,
           height: 239,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -24,7 +24,7 @@ class CardArticle extends StatelessWidget {
                 top: 0,
                 left: 0,
                 child: Container(
-                  width: 306,
+                  width: 345,
                   height: 239,
                 )),
             Positioned(
@@ -46,7 +46,7 @@ class CardArticle extends StatelessWidget {
                 top: 0,
                 left: 0,
                 child: Container(
-                    width: 306,
+                    width: 345,
                     height: 172,
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -55,7 +55,7 @@ class CardArticle extends StatelessWidget {
                     ))),
             Positioned(
                 top: 209,
-                left: 220,
+                left: 260,
                 child: Container(
                     width: 75,
                     height: 17,
