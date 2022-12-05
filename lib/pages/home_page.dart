@@ -7,7 +7,7 @@ import 'package:pet_app/widgets/card_item.dart';
 import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
 import 'package:pet_app/widgets/sub_title.dart';
-import 'package:pet_app/widgets/what_new.dart';
+import 'package:pet_app/widgets/card_article.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -231,7 +231,10 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 22),
-                const SubTitle(title: "Near You"),
+                const SubTitle(
+                  title: "Near You",
+                  size: 22,
+                ),
 
                 // Near You
                 Container(
@@ -265,18 +268,27 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 //whats new
-                const SubTitle(title: "What's New ?"),
+                const SubTitle(
+                  title: "What's New ?",
+                  size: 22,
+                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(children: const [
-                    WhatsNew(
-                      title: 'How To Adopt a Dog',
-                      pathImage: './assets/home/dog_glass.png',
+                  child: Row(children: [
+                    InkWell(
+                      onTap: () => context.goNamed('article-detail'),
+                      child: const CardArticle(
+                        title: 'How To Adopt a Dog',
+                        pathImage: './assets/home/dog_glass.png',
+                      ),
                     ),
-                    SizedBox(width: 20),
-                    WhatsNew(
-                      title: 'How To Adopt a Cat',
-                      pathImage: './assets/home/cat.png',
+                    const SizedBox(width: 20),
+                    InkWell(
+                      onTap: () => context.goNamed('article-detail'),
+                      child: const CardArticle(
+                        title: 'How To Adopt a Cat',
+                        pathImage: './assets/home/cat.png',
+                      ),
                     ),
                   ]),
                 ),

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/card_adoption_item.dart';
 import 'package:pet_app/widgets/location_item.dart';
-import 'package:pet_app/widgets/sub_title.dart';
 
 class AdoptionDetailPage extends StatelessWidget {
   const AdoptionDetailPage({super.key});

@@ -117,7 +117,10 @@ class AdoptionPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
 
-                const SubTitle(title: "Near You"),
+                const SubTitle(
+                  title: "Near You",
+                  size: 22,
+                ),
 
                 // Near You
                 Container(

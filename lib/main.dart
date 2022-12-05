@@ -36,6 +36,11 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => const HomePage(),
         routes: [
           GoRoute(
+            path: 'article-detail',
+            name: 'article-detail',
+            builder: (context, state) => const ArticleDetailPage(),
+          ),
+          GoRoute(
               path: 'adoption',
               name: 'adoption',
               builder: (context, state) => const AdoptionPage(),
@@ -46,11 +51,6 @@ class MyApp extends StatelessWidget {
                   builder: (context, state) => const AdoptionDetailPage(),
                 )
               ]),
-          GoRoute(
-            path: 'article-detail',
-            name: 'article-detail',
-            builder: (context, state) => const ArticleDetailPage(),
-          ),
         ]),
   ], initialLocation: '/home');
 
