@@ -61,10 +61,10 @@ class HomePage extends StatelessWidget {
                     width: 6,
                   ),
                   Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle, color: Colors.grey[300]),
-                    child: Icon(Icons.person_outline),
+                    child: const Icon(Icons.person_outline),
                   )
                 ],
               ),
@@ -94,9 +94,19 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+                // ListItem(
+                //     icon: Icons.home,
+                //     text: 'Home',
+                //     callback: () {
+                //       context.goNamed('home');
+                //     }),
                 ListItem(icon: Icons.person, text: 'Profile', callback: () {}),
                 ListItem(
-                    icon: Icons.pets_outlined, text: 'Adopt', callback: () {}),
+                    icon: Icons.pets_outlined,
+                    text: 'Adopt',
+                    callback: () {
+                      context.pushNamed('adoption');
+                    }),
                 ListItem(
                     icon: Icons.monetization_on,
                     text: 'Donate',

@@ -15,7 +15,7 @@ class SubTitle extends StatelessWidget {
           style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontWeight: FontWeight.bold,
-              fontSize: 20),
+              fontSize: 22),
         ),
         TextButton(
           onPressed: () {},

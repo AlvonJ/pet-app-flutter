@@ -151,7 +151,7 @@ class AdoptionDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6)),
                   child: IconButton(
                     onPressed: () {
-                      context.goNamed('home');
+                      context.goNamed('adoption');
                     },
                     icon: const Icon(
                       Icons.arrow_back_outlined,

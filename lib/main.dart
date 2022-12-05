@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_app/models/utils.dart';
 import 'package:pet_app/pages/adoption_detail_page.dart';
+import 'package:pet_app/pages/adoption_page.dart';
 import 'package:pet_app/pages/article_detail_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
@@ -35,17 +36,23 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => const HomePage(),
         routes: [
           GoRoute(
+              path: 'adoption',
+              name: 'adoption',
+              builder: (context, state) => const AdoptionPage(),
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  name: 'adoption-detail',
+                  builder: (context, state) => const AdoptionDetailPage(),
+                )
+              ]),
+          GoRoute(
             path: 'article-detail',
             name: 'article-detail',
             builder: (context, state) => const ArticleDetailPage(),
           ),
         ]),
-    GoRoute(
-      path: '/adoption-detail',
-      name: 'adoption-detail',
-      builder: (context, state) => const AdoptionDetailPage(),
-    )
-  ], initialLocation: '/adoption-detail');
+  ], initialLocation: '/home');
 
   @override
   Widget build(BuildContext context) {
