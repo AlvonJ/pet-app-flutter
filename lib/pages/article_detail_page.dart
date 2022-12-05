@@ -119,7 +119,7 @@ class ArticleDetailPage extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(6)),
                   child: IconButton(
                     onPressed: () {
-                      context.goNamed('adoption');
+                      context.goNamed('home');
                     },
                     icon: const Icon(
                       Icons.arrow_back_outlined,
