@@ -91,7 +91,7 @@ class FamilyPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () => context.goNamed('article-detail'),
+                   onTap: () => context.goNamed('article-detail'),
                   child: const FamilyCard(
                     title: 'How To Adopt a Cat',
                     pathImage: './assets/home/cat.png',

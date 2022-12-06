@@ -30,7 +30,7 @@ class ArticleDetailPage extends StatelessWidget {
               height: 350,
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('./assets/article/high_five.png'),
+                      image: AssetImage('./assets/Rectangle44.png'),
                       fit: BoxFit.cover)),
             )),
             Positioned(
