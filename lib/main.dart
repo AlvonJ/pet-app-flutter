@@ -10,6 +10,7 @@ import 'package:pet_app/pages/article_detail_page.dart';
 import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
+import 'package:pet_app/pages/shop_detail_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
 
 void main() async {
@@ -64,8 +65,13 @@ class MyApp extends StatelessWidget {
                   builder: (context, state) => const AdoptionCategoryPage(),
                 ),
               ]),
+          GoRoute(
+            path: 'shop-detail',
+            name: 'shop-detail',
+            builder: (context, state) => const ShopDetailPage(),
+          ),
         ]),
-  ], initialLocation: '/home');
+  ], initialLocation: '/home/shop-detail');
 
   @override
   Widget build(BuildContext context) {
