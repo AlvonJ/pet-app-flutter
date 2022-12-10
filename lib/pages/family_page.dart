@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/family_card.dart';
+import 'package:pet_app/widgets/search_bar.dart';
 
 class FamilyPage extends StatelessWidget {
   const FamilyPage({super.key});
@@ -63,24 +64,7 @@ class FamilyPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                Material(
-                  elevation: 1,
-                  borderRadius: BorderRadius.circular(10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 16),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                                color: AppColors.secondaryColor)),
-                        hintText: "Search..",
-                        hintStyle: const TextStyle(
-                            color: AppColors.secondaryColor, fontSize: 16),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                ),
+                const SearchBar(),
                 const SizedBox(height: 20),
                 InkWell(
                   onTap: () => context.goNamed('article-detail'),
@@ -91,7 +75,7 @@ class FamilyPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                   onTap: () => context.goNamed('article-detail'),
+                  onTap: () => context.goNamed('article-detail'),
                   child: const FamilyCard(
                     title: 'How To Adopt a Cat',
                     pathImage: './assets/home/cat.png',

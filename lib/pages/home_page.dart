@@ -9,6 +9,8 @@ import 'package:pet_app/widgets/list_item.dart';
 import 'package:pet_app/widgets/sub_title.dart';
 import 'package:pet_app/widgets/card_article.dart';
 
+import '../widgets/search_bar.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -105,13 +107,20 @@ class HomePage extends StatelessWidget {
                     icon: Icons.pets_outlined,
                     text: 'Adopt',
                     callback: () {
+                      Navigator.of(context).pop();
                       context.pushNamed('adoption');
                     }),
                 ListItem(
                     icon: Icons.monetization_on,
                     text: 'Donate',
                     callback: () {}),
-                ListItem(icon: Icons.people, text: 'Family', callback: () {}),
+                ListItem(
+                    icon: Icons.people,
+                    text: 'Family',
+                    callback: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed('family');
+                    }),
                 ListItem(icon: Icons.newspaper, text: 'News', callback: () {}),
                 ListItem(icon: Icons.shopify, text: 'Shop', callback: () {}),
                 ListItem(
@@ -121,9 +130,10 @@ class HomePage extends StatelessWidget {
                 ListItem(
                     icon: Icons.logout,
                     text: 'Logout',
-                    callback: () async {
-                      await FirebaseAuth.instance.signOut();
-                      context.goNamed('login');
+                    callback: () {
+                      FirebaseAuth.instance
+                          .signOut()
+                          .then((_) => context.goNamed('login'));
                     })
               ],
             ),
@@ -160,23 +170,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                Material(
-                  elevation: 1,
-                  borderRadius: BorderRadius.circular(10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                BorderSide(color: AppColors.secondaryColor)),
-                        hintText: "Search..",
-                        hintStyle: TextStyle(
-                            color: AppColors.secondaryColor, fontSize: 16),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                ),
+                const SearchBar(),
                 const SizedBox(
                   height: 20,
                 ),

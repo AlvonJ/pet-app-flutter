@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_app/models/utils.dart';
+import 'package:pet_app/pages/adoption_category_page.dart';
 import 'package:pet_app/pages/adoption_detail_page.dart';
 import 'package:pet_app/pages/adoption_page.dart';
 import 'package:pet_app/pages/article_detail_page.dart';
@@ -56,7 +57,12 @@ class MyApp extends StatelessWidget {
                   path: 'detail',
                   name: 'adoption-detail',
                   builder: (context, state) => const AdoptionDetailPage(),
-                )
+                ),
+                GoRoute(
+                  path: 'category',
+                  name: 'adoption-category',
+                  builder: (context, state) => const AdoptionCategoryPage(),
+                ),
               ]),
         ]),
   ], initialLocation: '/home');

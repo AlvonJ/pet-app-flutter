@@ -7,6 +7,7 @@ import 'package:pet_app/widgets/card_category.dart';
 import 'package:pet_app/widgets/card_item.dart';
 import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
+import 'package:pet_app/widgets/search_bar.dart';
 import 'package:pet_app/widgets/sub_title.dart';
 
 class AdoptionPage extends StatelessWidget {
@@ -69,23 +70,7 @@ class AdoptionPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                Material(
-                  elevation: 1,
-                  borderRadius: BorderRadius.circular(10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(
-                                color: AppColors.secondaryColor)),
-                        hintText: "Search..",
-                        hintStyle: const TextStyle(
-                            color: AppColors.secondaryColor, fontSize: 16),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
-                ),
+                const SearchBar(),
                 const SizedBox(height: 20),
                 const Text(
                   "Category",
@@ -100,17 +85,19 @@ class AdoptionPage extends StatelessWidget {
                   height: 290,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: const [
+                    children: [
                       CardCategory(
                         text: "Dogs",
                         pathImage: './assets/adoption/dog2.png',
                         pathSvg: './assets/adoption/emoji-dog.svg',
+                        onTap: () => context.pushNamed('adoption-category'),
                       ),
-                      SizedBox(width: 18),
+                      const SizedBox(width: 18),
                       CardCategory(
                         text: "Cats",
                         pathImage: './assets/adoption/cat.png',
                         pathSvg: './assets/adoption/emoji-cat.svg',
+                        onTap: () => context.pushNamed('adoption-category'),
                       ),
                     ],
                   ),
