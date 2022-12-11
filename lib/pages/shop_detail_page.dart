@@ -6,8 +6,15 @@ import 'package:pet_app/widgets/sub_title.dart';
 
 import '../widgets/card_article.dart';
 
-class ShopDetailPage extends StatelessWidget {
+class ShopDetailPage extends StatefulWidget {
   const ShopDetailPage({super.key});
+
+  @override
+  State<ShopDetailPage> createState() => _ShopDetailPageState();
+}
+
+class _ShopDetailPageState extends State<ShopDetailPage> {
+  int number = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +101,7 @@ class ShopDetailPage extends StatelessWidget {
                       BoxDecoration(borderRadius: BorderRadius.circular(6)),
                   child: IconButton(
                     onPressed: () {
-                      context.goNamed('home');
+                      context.pushNamed('home');
                     },
                     icon: const Icon(
                       Icons.arrow_back_outlined,
@@ -111,7 +118,7 @@ class ShopDetailPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        width: 138,
+                        width: 150,
                         height: 40,
                         decoration: BoxDecoration(
                             border: Border.all(
@@ -123,16 +130,24 @@ class ShopDetailPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    if (number > 1) number--;
+                                  });
+                                },
                                 child: const Text(
                                   "-",
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold),
                                 )),
-                            const Text("1"),
+                            Text('$number'),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    number++;
+                                  });
+                                },
                                 child: const Text("+",
                                     style: TextStyle(
                                         fontSize: 12,
@@ -141,8 +156,8 @@ class ShopDetailPage extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const Text(
-                        "Rp 120.000",
+                      Text(
+                        'Rp ${number * 120000}',
                         style: TextStyle(
                             color: AppColors.mainColor,
                             fontSize: 22,

@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => const ShopDetailPage(),
           ),
         ]),
-  ], initialLocation: '/home/shop-detail');
+  ], initialLocation: '/home');
 
   @override
   Widget build(BuildContext context) {

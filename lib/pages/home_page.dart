@@ -122,7 +122,13 @@ class HomePage extends StatelessWidget {
                       context.pushNamed('family');
                     }),
                 ListItem(icon: Icons.newspaper, text: 'News', callback: () {}),
-                ListItem(icon: Icons.shopify, text: 'Shop', callback: () {}),
+                ListItem(
+                    icon: Icons.shopify,
+                    text: 'Shop',
+                    callback: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed('shop-detail');
+                    }),
                 ListItem(
                     icon: Icons.settings_rounded,
                     text: 'Settings',
