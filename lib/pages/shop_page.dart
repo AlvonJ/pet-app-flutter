@@ -62,7 +62,7 @@ class ShopPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 16),
                 const SearchBar(),
-                const SizedBox(height: 10),
+                const SizedBox(height: 16),
                 Row(
                   children: const [
                     ShopCategory(
@@ -80,10 +80,10 @@ class ShopPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                const SizedBox(height: 20),
                 const SubTitle(title: "Popular Food", size: 20),
                 const SizedBox(height: 10),
                 SizedBox(
-                  height: 250,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -106,9 +106,11 @@ class ShopPage extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(height: 20),
                 const SubTitle(title: "Buy In Bundle", size: 20),
                 const SizedBox(height: 10),
-                Bundle()
+                const Bundle(),
+                const SizedBox(height: 50),
               ],
             ),
           ),

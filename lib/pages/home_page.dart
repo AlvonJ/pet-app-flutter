@@ -102,7 +102,13 @@ class HomePage extends StatelessWidget {
                 //     callback: () {
                 //       context.goNamed('home');
                 //     }),
-                ListItem(icon: Icons.person, text: 'Profile', callback: () {}),
+                ListItem(
+                    icon: Icons.person,
+                    text: 'Profile',
+                    callback: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed('profile');
+                    }),
                 ListItem(
                     icon: Icons.pets_outlined,
                     text: 'Adopt',

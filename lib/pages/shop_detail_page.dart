@@ -155,7 +155,7 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
                       const Spacer(),
                       Text(
                         'Rp ${number * 120000}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: AppColors.mainColor,
                             fontSize: 22,
                             fontWeight: FontWeight.bold),

@@ -10,6 +10,7 @@ import 'package:pet_app/pages/article_detail_page.dart';
 import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
+import 'package:pet_app/pages/profile_page.dart';
 import 'package:pet_app/pages/shop_detail_page.dart';
 import 'package:pet_app/pages/shop_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
@@ -77,6 +78,11 @@ class MyApp extends StatelessWidget {
                   builder: (context, state) => const ShopDetailPage(),
                 ),
               ]),
+          GoRoute(
+            path: 'profile',
+            name: 'profile',
+            builder: (context, state) => ProfilePage(),
+          ),
         ]),
   ], initialLocation: '/home');
 

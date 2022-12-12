@@ -21,7 +21,7 @@ class ItemShop extends StatelessWidget {
       onTap: onTap,
       child: SizedBox(
         width: 155,
-        height: 250,
+        height: 270,
         child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -55,9 +55,9 @@ class ItemShop extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           fontSize: 14),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 15),
                     ElevatedButton(
-                      onPressed: onTap,
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
