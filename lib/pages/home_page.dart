@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
                     text: 'Shop',
                     callback: () {
                       Navigator.of(context).pop();
-                      context.pushNamed('shop-detail');
+                      context.pushNamed('shop');
                     }),
                 ListItem(
                     icon: Icons.settings_rounded,

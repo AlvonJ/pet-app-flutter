@@ -11,6 +11,7 @@ import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/shop_detail_page.dart';
+import 'package:pet_app/pages/shop_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
 
 void main() async {
@@ -66,10 +67,16 @@ class MyApp extends StatelessWidget {
                 ),
               ]),
           GoRoute(
-            path: 'shop-detail',
-            name: 'shop-detail',
-            builder: (context, state) => const ShopDetailPage(),
-          ),
+              path: 'shop',
+              name: 'shop',
+              builder: (context, state) => const ShopPage(),
+              routes: [
+                GoRoute(
+                  path: 'shop-detail',
+                  name: 'shop-detail',
+                  builder: (context, state) => const ShopDetailPage(),
+                ),
+              ]),
         ]),
   ], initialLocation: '/home');
 

@@ -2,9 +2,6 @@ import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
-import 'package:pet_app/widgets/sub_title.dart';
-
-import '../widgets/card_article.dart';
 
 class ShopDetailPage extends StatefulWidget {
   const ShopDetailPage({super.key});
@@ -101,7 +98,7 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
                       BoxDecoration(borderRadius: BorderRadius.circular(6)),
                   child: IconButton(
                     onPressed: () {
-                      context.pushNamed('home');
+                      context.goNamed('shop');
                     },
                     icon: const Icon(
                       Icons.arrow_back_outlined,
