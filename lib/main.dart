@@ -11,6 +11,7 @@ import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/profile_page.dart';
+import 'package:pet_app/pages/setting_page.dart';
 import 'package:pet_app/pages/shop_detail_page.dart';
 import 'package:pet_app/pages/shop_page.dart';
 import 'package:pet_app/pages/shop_payment_page.dart';
@@ -89,8 +90,13 @@ class MyApp extends StatelessWidget {
             name: 'profile',
             builder: (context, state) => ProfilePage(),
           ),
+          GoRoute(
+            path: 'setting',
+            name: 'setting',
+            builder: (context, state) => SettingPage(),
+          ),
         ]),
-  ], initialLocation: '/home/shop/shop-payment');
+  ], initialLocation: '/home/setting');
 
   @override
   Widget build(BuildContext context) {

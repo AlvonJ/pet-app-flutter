@@ -138,7 +138,9 @@ class HomePage extends StatelessWidget {
                 ListItem(
                     icon: Icons.settings_rounded,
                     text: 'Settings',
-                    callback: () {}),
+                    callback: () {
+                      context.pushNamed('setting');
+                    }),
                 ListItem(
                     icon: Icons.logout,
                     text: 'Logout',
