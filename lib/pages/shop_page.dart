@@ -39,7 +39,9 @@ class ShopPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed('shop-payment');
+                    },
                     iconSize: 30,
                     icon: const Icon(
                       Icons.shopping_cart_outlined,

@@ -13,6 +13,7 @@ import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/profile_page.dart';
 import 'package:pet_app/pages/shop_detail_page.dart';
 import 'package:pet_app/pages/shop_page.dart';
+import 'package:pet_app/pages/shop_payment_page.dart';
 import 'package:pet_app/pages/sign_up_page.dart';
 
 void main() async {
@@ -77,6 +78,11 @@ class MyApp extends StatelessWidget {
                   name: 'shop-detail',
                   builder: (context, state) => const ShopDetailPage(),
                 ),
+                GoRoute(
+                  path: 'shop-payment',
+                  name: 'shop-payment',
+                  builder: (context, state) => const ShopPaymentPage(),
+                ),
               ]),
           GoRoute(
             path: 'profile',
@@ -84,7 +90,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => ProfilePage(),
           ),
         ]),
-  ], initialLocation: '/home');
+  ], initialLocation: '/home/shop/shop-payment');
 
   @override
   Widget build(BuildContext context) {
