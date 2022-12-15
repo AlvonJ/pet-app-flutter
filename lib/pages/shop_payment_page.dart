@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/provider/shop_provider.dart';
@@ -22,11 +23,18 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
     //riverpod
-    final carts = ref.watch(cartNotifierProvider);
-    for (var e in carts.cart) {
-      log('${e.title}');
-    }
-    
+    final carts = ref.watch(cartNotifierProvider).cart;
+    final total = ref.watch(cartNotifierProvider).total;
+    final semua = total.fold(
+      0,
+      (previousValue, element) => previousValue + element,
+    );
+    carts.forEach(
+      (element) => log('${element.title}'),
+    );
+    total.forEach((element) {
+      log(element.toString());
+    });
 
     return Container(
       constraints: const BoxConstraints.expand(),
@@ -79,33 +87,45 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 10),
-                        child: Row(
-                          children: const [
-                            Text(
-                              "3",
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.mainColor),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              child: Row(
+                                children: const [
+                                  Text(
+                                    "3",
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.mainColor),
+                                  ),
+                                  Text(
+                                    " Items",
+                                    style: TextStyle(
+                                        fontSize: 13,
+                                        color: AppColors.mainColor),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              " Items",
-                              style: TextStyle(
-                                  fontSize: 13, color: AppColors.mainColor),
-                            )
                           ],
                         ),
                       ),
-                      const PaymentItem(
-                          pathImage: 'assets/shop/box.png',
-                          title: "Pedigree Adult Meal",
-                          price: 120000,
-                          amount: 2),
-                      const PaymentItem(
-                          pathImage: 'assets/shop/can.png',
-                          title: "Puppy Meal",
-                          price: 80000,
-                          amount: 1),
+                      SizedBox(
+                        height: 400,
+                        width: 350,
+                        child: ListView.builder(
+                          itemCount: carts.length,
+                          itemBuilder: (context, index) {
+                            return PaymentItem(
+                                pathImage: carts[index].path,
+                                title: carts[index].title,
+                                price: carts[index].price * total[index],
+                                amount: total[index]);
+                          },
+                        ),
+                      ),
                       const SizedBox(height: 20)
                     ],
                   ),
@@ -139,14 +159,14 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                         children: [
                           const SizedBox(height: 25),
                           Row(
-                            children: const [
-                              Text('3 Items',
-                                  style: TextStyle(
+                            children: [
+                              Text('${semua} Items',
+                                  style: const TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold)),
-                              Spacer(),
-                              Text("Rp 200000",
+                              const Spacer(),
+                              const Text("Rp 200000",
                                   style: TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 16,

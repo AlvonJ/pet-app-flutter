@@ -35,7 +35,11 @@ class _ShopPageState extends ConsumerState<ShopPage> {
   @override
   Widget build(BuildContext context) {
     // provider
-    final carts = ref.watch(cartNotifierProvider);
+    final carts = ref.watch(cartNotifierProvider).total;
+    final totals = carts.fold(
+      0,
+      (previousValue, element) => previousValue + element,
+    );
 
     return Container(
       constraints: const BoxConstraints.expand(),
@@ -86,7 +90,7 @@ class _ShopPageState extends ConsumerState<ShopPage> {
                             color: Colors.green,
                           ),
                           child: Text(
-                            carts.cart.length.toString(),
+                            totals.toString(),
                             style: const TextStyle(
                                 fontSize: 8, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,

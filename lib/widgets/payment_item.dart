@@ -11,7 +11,7 @@ class PaymentItem extends StatelessWidget {
       required this.pathImage,
       required this.title,
       required this.price,
-      this.amount = 1});
+      required this.amount});
 
   @override
   Widget build(BuildContext context) {
