@@ -23,7 +23,10 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
 
     //riverpod
     final carts = ref.watch(cartNotifierProvider);
-    log(carts.cart.toString());
+    for (var e in carts.cart) {
+      log('${e.title}');
+    }
+    
 
     return Container(
       constraints: const BoxConstraints.expand(),

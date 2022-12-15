@@ -6,7 +6,7 @@ import 'package:pet_app/provider/shop_provider.dart';
 class ItemShop extends ConsumerWidget {
   final String pathImage;
   final String text;
-  final String price;
+  final int price;
   final VoidCallback onTap;
 
   const ItemShop({
@@ -51,7 +51,7 @@ class ItemShop extends ConsumerWidget {
                           fontSize: 14),
                     ),
                     Text(
-                      price,
+                      'Rp. $price',
                       style: const TextStyle(
                           color: AppColors.mainColor,
                           fontWeight: FontWeight.w600,
@@ -61,7 +61,9 @@ class ItemShop extends ConsumerWidget {
                     ElevatedButton(
                       onPressed: () {
                         ref.read(cartNotifierProvider.notifier).addProduct(
-                            {"title": text, "price": price, "path": pathImage});
+                              Product(
+                                  title: text, price: price, path: pathImage),
+                            );
                       },
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

@@ -1,16 +1,18 @@
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/provider/shop_provider.dart';
 
-class ShopDetailPage extends StatefulWidget {
+class ShopDetailPage extends ConsumerStatefulWidget {
   const ShopDetailPage({super.key});
 
   @override
-  State<ShopDetailPage> createState() => _ShopDetailPageState();
+  ConsumerState<ShopDetailPage> createState() => _ShopDetailPageState();
 }
 
-class _ShopDetailPageState extends State<ShopDetailPage> {
+class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
   int number = 1;
 
   @override
@@ -173,7 +175,16 @@ class _ShopDetailPageState extends State<ShopDetailPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
                       backgroundColor: AppColors.secondaryColor),
-                  onPressed: () {},
+                  onPressed: () {
+                    for (var i = 0; i < number; i++) {
+                      ref.read(cartNotifierProvider.notifier).addProduct(
+                            Product(
+                                title: 'Pedigree adult meal',
+                                price: 120000,
+                                path: 'assets/shop/box.png'),
+                          );
+                    }
+                  },
                   child: Row(children: const [
                     Icon(Icons.shopping_cart_outlined),
                     SizedBox(width: 20),

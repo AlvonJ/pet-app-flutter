@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,16 +8,16 @@ final cartNotifierProvider = ChangeNotifierProvider<CartNotifier>(
 );
 
 class CartNotifier extends ChangeNotifier {
-  List<Map> cart = [];
+  List<Product> cart = [];
 
-  List<Map> get getProducts => cart;
+  List<Product> get getProducts => cart;
 
-  void addProduct(Map product) {
+  void addProduct(Product product) {
     cart.add(product);
     notifyListeners();
   }
 
-  void removeProduct(Map product) {
+  void removeProduct(Product product) {
     cart.remove(product);
     notifyListeners();
   }
@@ -24,4 +26,16 @@ class CartNotifier extends ChangeNotifier {
     cart.clear();
     notifyListeners();
   }
+}
+
+class Product {
+  String title;
+  int price;
+  String path;
+
+  Product({
+    required this.title,
+    required this.price,
+    required this.path,
+  });
 }

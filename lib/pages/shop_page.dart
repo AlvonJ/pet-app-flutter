@@ -166,11 +166,11 @@ class FoodWidget extends StatelessWidget {
         children: [
           ItemShop(
             pathImage: 'assets/shop/box.png',
-            text: "Pedigree meal",
+            text: "Pedigree adult meal",
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 120.000',
+            price: 120000,
           ),
           ItemShop(
             pathImage: 'assets/shop/can.png',
@@ -178,7 +178,7 @@ class FoodWidget extends StatelessWidget {
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 40.000',
+            price: 40000,
           ),
         ],
       ),
@@ -203,7 +203,7 @@ class AccessoriesWidget extends StatelessWidget {
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 120.000',
+            price: 100000,
           ),
           ItemShop(
             pathImage: 'assets/shop/leash.png',
@@ -211,7 +211,7 @@ class AccessoriesWidget extends StatelessWidget {
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 40.000',
+            price: 80000,
           ),
         ],
       ),
@@ -236,7 +236,7 @@ class ToysWidget extends StatelessWidget {
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 120.000',
+            price: 50000,
           ),
           ItemShop(
             pathImage: 'assets/shop/toy2.png',
@@ -244,7 +244,7 @@ class ToysWidget extends StatelessWidget {
             onTap: () {
               context.goNamed('shop-detail');
             },
-            price: 'Rp 40.000',
+            price: 40000,
           ),
         ],
       ),
