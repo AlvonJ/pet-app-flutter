@@ -1,21 +1,29 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/provider/shop_provider.dart';
 import 'package:pet_app/widgets/deliver_location.dart';
 import 'package:pet_app/widgets/payment_item.dart';
 
-class ShopPaymentPage extends StatefulWidget {
+class ShopPaymentPage extends ConsumerStatefulWidget {
   const ShopPaymentPage({super.key});
 
   @override
-  State<ShopPaymentPage> createState() => _ShopPaymentPageState();
+  ConsumerState<ShopPaymentPage> createState() => _ShopPaymentPageState();
 }
 
-class _ShopPaymentPageState extends State<ShopPaymentPage> {
+class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
   int number = 1;
 
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
+
+    //riverpod
+    final carts = ref.watch(cartNotifierProvider);
+    log(carts.cart.toString());
 
     return Container(
       constraints: const BoxConstraints.expand(),

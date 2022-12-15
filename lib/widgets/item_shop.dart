@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/provider/shop_provider.dart';
 
-class ItemShop extends StatelessWidget {
+class ItemShop extends ConsumerWidget {
   final String pathImage;
   final String text;
   final String price;
@@ -16,7 +18,7 @@ class ItemShop extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
@@ -57,7 +59,10 @@ class ItemShop extends StatelessWidget {
                     ),
                     const SizedBox(height: 15),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        ref.read(cartNotifierProvider.notifier).addProduct(
+                            {"title": text, "price": price, "path": pathImage});
+                      },
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),

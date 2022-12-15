@@ -91,7 +91,7 @@ class ProfilePage extends StatelessWidget {
                         borderSide:
                             const BorderSide(color: Colors.red, width: 1.5),
                         borderRadius: BorderRadius.circular(10)),
-                    border: const OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                     labelText: 'Address',
                     labelStyle: const TextStyle(fontSize: 14),
                   ),
