@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/models/utils.dart';
 
 class PaymentItem extends StatelessWidget {
   final pathImage;
@@ -46,7 +47,7 @@ class PaymentItem extends StatelessWidget {
                               fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          'Rp ${amount * price}',
+                          CurrencyFormat.convertToIdr(price * amount, 0),
                           style: const TextStyle(
                               color: AppColors.mainColor,
                               fontSize: 18,

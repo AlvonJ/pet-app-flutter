@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/models/utils.dart';
 import 'package:pet_app/provider/shop_provider.dart';
 
 class ItemShop extends ConsumerWidget {
@@ -51,7 +52,7 @@ class ItemShop extends ConsumerWidget {
                           fontSize: 14),
                     ),
                     Text(
-                      'Rp. $price',
+                      CurrencyFormat.convertToIdr(price, 0),
                       style: const TextStyle(
                           color: AppColors.mainColor,
                           fontWeight: FontWeight.w600,

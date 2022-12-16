@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/models/utils.dart';
 import 'package:pet_app/provider/shop_provider.dart';
 import 'package:pet_app/widgets/deliver_location.dart';
 import 'package:pet_app/widgets/payment_item.dart';
@@ -29,6 +30,16 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
       0,
       (previousValue, element) => previousValue + element,
     );
+
+    int totalPayment() {
+      int hargaAkhir = 0;
+
+      for (var i = 0; i < carts.length; i++) {
+        hargaAkhir += carts[i].price * total[i];
+      }
+      return hargaAkhir;
+    }
+
     carts.forEach(
       (element) => log('${element.title}'),
     );
@@ -92,15 +103,15 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                             SizedBox(
                               width: double.infinity,
                               child: Row(
-                                children: const [
+                                children: [
                                   Text(
-                                    "3",
-                                    style: TextStyle(
+                                    semua.toString(),
+                                    style: const TextStyle(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
                                         color: AppColors.mainColor),
                                   ),
-                                  Text(
+                                  const Text(
                                     " Items",
                                     style: TextStyle(
                                         fontSize: 13,
@@ -112,21 +123,23 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 400,
+                      Container(
+                        height: 220,
                         width: 350,
+                        margin: const EdgeInsets.only(bottom: 50),
                         child: ListView.builder(
+                          scrollDirection: Axis.vertical,
                           itemCount: carts.length,
                           itemBuilder: (context, index) {
                             return PaymentItem(
                                 pathImage: carts[index].path,
                                 title: carts[index].title,
-                                price: carts[index].price * total[index],
+                                price: carts[index].price,
                                 amount: total[index]);
                           },
                         ),
                       ),
-                      const SizedBox(height: 20)
+                      const SizedBox(height: 100)
                     ],
                   ),
                 ],
@@ -166,8 +179,10 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold)),
                               const Spacer(),
-                              const Text("Rp 200000",
-                                  style: TextStyle(
+                              Text(
+                                  CurrencyFormat.convertToIdr(
+                                      totalPayment(), 0),
+                                  style: const TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold)),
@@ -182,7 +197,7 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400)),
                               Spacer(),
-                              Text("Rp 10000",
+                              Text("Rp 10.000",
                                   style: TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 16,
@@ -191,15 +206,17 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                           ),
                           const SizedBox(height: 25),
                           Row(
-                            children: const [
-                              Text('Total',
+                            children: [
+                              const Text('Total',
                                   style: TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
-                              Spacer(),
-                              Text("Rp 210000",
-                                  style: TextStyle(
+                              const Spacer(),
+                              Text(
+                                  CurrencyFormat.convertToIdr(
+                                      totalPayment() + 10000, 0),
+                                  style: const TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold)),
