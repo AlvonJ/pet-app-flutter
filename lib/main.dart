@@ -8,6 +8,7 @@ import 'package:pet_app/pages/adoption_category_page.dart';
 import 'package:pet_app/pages/adoption_detail_page.dart';
 import 'package:pet_app/pages/adoption_page.dart';
 import 'package:pet_app/pages/article_detail_page.dart';
+import 'package:pet_app/pages/donate_page.dart';
 import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
@@ -94,7 +95,12 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: 'setting',
             name: 'setting',
-            builder: (context, state) => SettingPage(),
+            builder: (context, state) => const SettingPage(),
+          ),
+          GoRoute(
+            path: 'donate',
+            name: 'donate',
+            builder: (context, state) => DonatePage(),
           ),
         ]),
   ], initialLocation: '/home/shop');

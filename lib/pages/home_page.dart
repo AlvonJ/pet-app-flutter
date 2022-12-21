@@ -66,7 +66,11 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle, color: Colors.grey[300]),
-                    child: const Icon(Icons.person_outline),
+                    child: IconButton(
+                        onPressed: () {
+                          context.pushNamed('profile');
+                        },
+                        icon: const Icon(Icons.person_outline)),
                   )
                 ],
               ),
@@ -119,7 +123,10 @@ class HomePage extends StatelessWidget {
                 ListItem(
                     icon: Icons.monetization_on,
                     text: 'Donate',
-                    callback: () {}),
+                    callback: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed('donate');
+                    }),
                 ListItem(
                     icon: Icons.people,
                     text: 'Family',
@@ -260,7 +267,7 @@ class HomePage extends StatelessWidget {
                           context.goNamed('adoption-detail');
                         },
                       ),
-                      SizedBox(width: 15),
+                      const SizedBox(width: 15),
                       CardItem(
                         pathImage: './assets/home/cat2.png',
                         name: 'Samantha',
