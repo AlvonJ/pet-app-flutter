@@ -9,6 +9,8 @@ import 'package:pet_app/pages/adoption_detail_page.dart';
 import 'package:pet_app/pages/adoption_page.dart';
 import 'package:pet_app/pages/article_detail_page.dart';
 import 'package:pet_app/pages/donate_page.dart';
+import 'package:pet_app/pages/donation_detail_page.dart';
+import 'package:pet_app/pages/donation_payment_page.dart';
 import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
@@ -98,10 +100,23 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => const SettingPage(),
           ),
           GoRoute(
-            path: 'donate',
-            name: 'donate',
-            builder: (context, state) => DonatePage(),
-          ),
+              path: 'donate',
+              name: 'donate',
+              builder: (context, state) => DonatePage(),
+              routes: [
+                GoRoute(
+                    path: 'donate-detail',
+                    name: 'donate-detail',
+                    builder: (context, state) => const DonationDetailPage(),
+                    routes: [
+                      GoRoute(
+                        path: 'donate-payment',
+                        name: 'donate-payment',
+                        builder: (context, state) =>
+                            const DonationPaymentPage(),
+                      )
+                    ]),
+              ]),
         ]),
   ], initialLocation: '/home/shop');
 

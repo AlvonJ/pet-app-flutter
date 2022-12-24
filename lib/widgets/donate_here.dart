@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 
 class DonateHere extends StatelessWidget {
@@ -94,7 +95,9 @@ class DonateHere extends StatelessWidget {
                   ),
                   child: Center(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pushNamed('donate');
+                      },
                       child: const Text(
                         'Donate Here',
                         textAlign: TextAlign.left,

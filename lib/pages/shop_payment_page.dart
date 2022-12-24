@@ -153,8 +153,7 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                 height: mediaQuery.size.height,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    border:
-                        Border.all(width: 0.6, color: AppColors.secondaryColor),
+                    border: Border.all(width: 1, color: AppColors.mainColor),
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
@@ -173,7 +172,7 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                           const SizedBox(height: 25),
                           Row(
                             children: [
-                              Text('${semua} Items',
+                              Text('$semua Items',
                                   style: const TextStyle(
                                       color: AppColors.mainColor,
                                       fontSize: 16,

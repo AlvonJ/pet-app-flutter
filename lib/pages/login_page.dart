@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                           showDialog(
                               context: context,
                               barrierDismissible: false,
-                              builder: (context) => Center(
+                              builder: (context) => const Center(
                                       child: CircularProgressIndicator(
                                     color: AppColors.mainColor,
                                   )));

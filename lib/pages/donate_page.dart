@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/card_donate.dart';
 import 'package:pet_app/widgets/card_trending_donation.dart';
@@ -92,32 +93,48 @@ class DonatePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     CardTrendingDonation(
-                        name: 'Roger',
-                        pathImage: './assets/donation/roger.png',
-                        amount: '5.000.000',
-                        percentage: 50,
-                        mediaQuery: mediaQuery),
+                      name: 'Roger',
+                      pathImage: './assets/donation/roger.png',
+                      amount: '5.000.000',
+                      percentage: 50,
+                      mediaQuery: mediaQuery,
+                      onTap: () {
+                        context.pushNamed('donate-detail');
+                      },
+                    ),
                     const SizedBox(height: 14),
                     CardTrendingDonation(
-                        name: 'Hachi',
-                        pathImage: './assets/donation/hachi.png',
-                        amount: '4.000.000',
-                        percentage: 80,
-                        mediaQuery: mediaQuery),
+                      name: 'Hachi',
+                      pathImage: './assets/donation/hachi.png',
+                      amount: '4.000.000',
+                      percentage: 80,
+                      mediaQuery: mediaQuery,
+                      onTap: () {
+                        context.pushNamed('donate-detail');
+                      },
+                    ),
                     const SizedBox(height: 14),
                     CardTrendingDonation(
-                        name: 'Kit',
-                        pathImage: './assets/donation/kit.png',
-                        amount: '3.000.000',
-                        percentage: 70,
-                        mediaQuery: mediaQuery),
+                      name: 'Kit',
+                      pathImage: './assets/donation/kit.png',
+                      amount: '3.000.000',
+                      percentage: 70,
+                      mediaQuery: mediaQuery,
+                      onTap: () {
+                        context.pushNamed('donate-detail');
+                      },
+                    ),
                     const SizedBox(height: 14),
                     CardTrendingDonation(
-                        name: 'Molly',
-                        pathImage: './assets/donation/molly.png',
-                        amount: '1.000.000',
-                        percentage: 10,
-                        mediaQuery: mediaQuery),
+                      name: 'Molly',
+                      pathImage: './assets/donation/molly.png',
+                      amount: '1.000.000',
+                      percentage: 10,
+                      mediaQuery: mediaQuery,
+                      onTap: () {
+                        context.pushNamed('donate-detail');
+                      },
+                    ),
                   ],
                 ),
               ),
