@@ -178,12 +178,18 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                   onPressed: () {
                     for (var i = 0; i < number; i++) {
                       ref.read(cartNotifierProvider.notifier).addProduct(
-                            Product(
+                            const Product(
                                 title: 'Pedigree adult meal',
                                 price: 120000,
                                 path: 'assets/shop/box.png'),
                           );
                     }
+                    const snackBar = SnackBar(
+                      backgroundColor: Colors.green,
+                      content: Text('Item(s) Added'),
+                    );
+                    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   child: Row(children: const [
                     Icon(Icons.shopping_cart_outlined),

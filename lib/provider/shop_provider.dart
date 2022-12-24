@@ -43,13 +43,29 @@ class CartNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeProduct(Product product) {
-    cart.remove(product);
+  // hapus semua product
+  void clearProduct(int index) {
+    cart.removeAt(index);
+    total.removeAt(index);
+
+    notifyListeners();
+  }
+
+  // - 1 product
+  void removeProduct(int index) {
+    total[index] -= 1;
+    notifyListeners();
+  }
+
+  // + 1 product
+  void plusProduct(int index) {
+    total[index] += 1;
     notifyListeners();
   }
 
   void clearCart() {
     cart.clear();
+    total.clear();
     notifyListeners();
   }
 }

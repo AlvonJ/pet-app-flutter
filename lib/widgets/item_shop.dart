@@ -65,6 +65,12 @@ class ItemShop extends ConsumerWidget {
                               Product(
                                   title: text, price: price, path: pathImage),
                             );
+                        const snackBar = SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Item Added'),
+                        );
+                        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

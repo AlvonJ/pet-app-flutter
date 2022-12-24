@@ -1,4 +1,6 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 
@@ -302,7 +304,23 @@ class _DonationPaymentPageState extends State<DonationPaymentPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24)),
                         backgroundColor: AppColors.secondaryColor),
-                    onPressed: () {},
+                    onPressed: () {
+                      AwesomeDialog(
+                        context: context,
+                        animType: AnimType.leftSlide,
+                        headerAnimationLoop: false,
+                        dialogType: DialogType.success,
+                        showCloseIcon: true,
+                        title: 'Success',
+                        desc: 'Payment Success',
+                        btnOkOnPress: () {
+                          setState(() {
+                            context.goNamed('donate');
+                          });
+                        },
+                        btnOkIcon: Icons.check_circle,
+                      ).show();
+                    },
                     child: const Text(
                       "Check Out",
                       style: TextStyle(fontSize: 18),

@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -71,7 +72,22 @@ class _ShopPageState extends ConsumerState<ShopPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          context.pushNamed('shop-payment');
+                          if (totals > 0) {
+                            context.pushNamed('shop-payment');
+                          } else {
+                            AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.warning,
+                              headerAnimationLoop: false,
+                              animType: AnimType.bottomSlide,
+                              title: 'Cart Empty',
+                              desc: 'Please add item to cart',
+                              buttonsTextStyle:
+                                  const TextStyle(color: Colors.black),
+                              showCloseIcon: true,
+                              btnOkOnPress: () {},
+                            ).show();
+                          }
                         },
                         iconSize: 30,
                         icon: const Icon(

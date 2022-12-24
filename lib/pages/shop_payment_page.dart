@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 import 'package:pet_app/provider/shop_provider.dart';
@@ -39,13 +41,6 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
       }
       return hargaAkhir;
     }
-
-    carts.forEach(
-      (element) => log('${element.title}'),
-    );
-    total.forEach((element) {
-      log(element.toString());
-    });
 
     return Container(
       constraints: const BoxConstraints.expand(),
@@ -132,10 +127,10 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                           itemCount: carts.length,
                           itemBuilder: (context, index) {
                             return PaymentItem(
-                                pathImage: carts[index].path,
-                                title: carts[index].title,
-                                price: carts[index].price,
-                                amount: total[index]);
+                              index: index,
+                              amount: total[index],
+                              product: carts[index],
+                            );
                           },
                         ),
                       ),
@@ -222,10 +217,6 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                             ],
                           ),
                           const SizedBox(height: 25),
-                          Column(
-                            children: const [],
-                          ),
-                          const SizedBox(height: 10),
                         ],
                       ),
                     ),
@@ -297,7 +288,24 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
                       backgroundColor: AppColors.secondaryColor),
-                  onPressed: () {},
+                  onPressed: () {
+                    AwesomeDialog(
+                      context: context,
+                      animType: AnimType.leftSlide,
+                      headerAnimationLoop: false,
+                      dialogType: DialogType.success,
+                      showCloseIcon: true,
+                      title: 'Success',
+                      desc: 'Payment Success',
+                      btnOkOnPress: () {
+                        setState(() {
+                          context.goNamed('shop');
+                          ref.read(cartNotifierProvider).clearCart();
+                        });
+                      },
+                      btnOkIcon: Icons.check_circle,
+                    ).show();
+                  },
                   child: const Text(
                     "Check Out",
                     style: TextStyle(fontSize: 18),
