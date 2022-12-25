@@ -299,7 +299,7 @@ class _ShopPaymentPageState extends ConsumerState<ShopPaymentPage> {
                       desc: 'Payment Success',
                       btnOkOnPress: () {
                         setState(() {
-                          context.goNamed('shop');
+                          context.pop();
                           ref.read(cartNotifierProvider).clearCart();
                         });
                       },

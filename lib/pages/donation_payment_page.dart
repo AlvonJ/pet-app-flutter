@@ -315,7 +315,9 @@ class _DonationPaymentPageState extends State<DonationPaymentPage> {
                         desc: 'Payment Success',
                         btnOkOnPress: () {
                           setState(() {
-                            context.goNamed('donate');
+                            // context.goNamed('home');
+                            context.pop();
+                            context.pop();
                           });
                         },
                         btnOkIcon: Icons.check_circle,
