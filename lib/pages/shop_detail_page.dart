@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +21,10 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
+    //riverpod
+    final detailItem = ref.watch(shopDetailProvider);
+    log(detailItem.toString());
+
     return Container(
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
@@ -34,9 +40,14 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                 child: Container(
               width: double.maxFinite,
               height: 350,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xff607d8b), Color(0xff03a9f4)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                   image: DecorationImage(
-                      image: AssetImage('./assets/shop/pedigree_backdrop.png'),
+                      image: AssetImage(detailItem['path']),
                       fit: BoxFit.cover)),
             )),
             Positioned(
@@ -62,8 +73,8 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                           horizontal: 20, vertical: 20),
                       child: ListView(
                         children: [
-                          const Text('Pedigree adult meal',
-                              style: TextStyle(
+                          Text(detailItem['text'],
+                              style: const TextStyle(
                                   color: AppColors.mainColor,
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold)),
@@ -156,7 +167,7 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                       ),
                       const Spacer(),
                       Text(
-                        'Rp ${number * 120000}',
+                        'Rp ${number * detailItem['price']}',
                         style: const TextStyle(
                             color: AppColors.mainColor,
                             fontSize: 22,
@@ -178,10 +189,10 @@ class _ShopDetailPageState extends ConsumerState<ShopDetailPage> {
                   onPressed: () {
                     for (var i = 0; i < number; i++) {
                       ref.read(cartNotifierProvider.notifier).addProduct(
-                            const Product(
-                                title: 'Pedigree adult meal',
-                                price: 120000,
-                                path: 'assets/shop/box.png'),
+                            Product(
+                                title: detailItem['text'],
+                                price: detailItem['price'],
+                                path: detailItem['path']),
                           );
                     }
                     const snackBar = SnackBar(

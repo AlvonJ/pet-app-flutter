@@ -173,13 +173,13 @@ class _ShopPageState extends ConsumerState<ShopPage> {
   }
 }
 
-class FoodWidget extends StatelessWidget {
+class FoodWidget extends ConsumerWidget {
   const FoodWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -189,6 +189,11 @@ class FoodWidget extends StatelessWidget {
             text: "Pedigree adult meal",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/box.png',
+                'text': 'Pedigree adult meal',
+                'price': 120000
+              };
             },
             price: 120000,
           ),
@@ -197,6 +202,11 @@ class FoodWidget extends StatelessWidget {
             text: "Puppy meal",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/can.png',
+                'text': 'Puppy meal',
+                'price': 40000
+              };
             },
             price: 40000,
           ),
@@ -206,13 +216,13 @@ class FoodWidget extends StatelessWidget {
   }
 }
 
-class AccessoriesWidget extends StatelessWidget {
+class AccessoriesWidget extends ConsumerWidget {
   const AccessoriesWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -222,6 +232,11 @@ class AccessoriesWidget extends StatelessWidget {
             text: "Dog Collar",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/collar.png',
+                'text': 'Dog Collar',
+                'price': 100000
+              };
             },
             price: 100000,
           ),
@@ -230,6 +245,11 @@ class AccessoriesWidget extends StatelessWidget {
             text: "Pet Leash",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/leash.png',
+                'text': 'Pet Leash',
+                'price': 80000
+              };
             },
             price: 80000,
           ),
@@ -239,13 +259,13 @@ class AccessoriesWidget extends StatelessWidget {
   }
 }
 
-class ToysWidget extends StatelessWidget {
+class ToysWidget extends ConsumerWidget {
   const ToysWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -255,6 +275,11 @@ class ToysWidget extends StatelessWidget {
             text: "Cat's Toy",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/toy1.png',
+                'text': "Cat's Toy",
+                'price': 50000
+              };
             },
             price: 50000,
           ),
@@ -263,6 +288,11 @@ class ToysWidget extends StatelessWidget {
             text: "Dog's Toy",
             onTap: () {
               context.goNamed('shop-detail');
+              ref.read(shopDetailProvider.notifier).state = {
+                'path': 'assets/shop/toy2.png',
+                'text': "Dog's Toy",
+                'price': 40000
+              };
             },
             price: 40000,
           ),
