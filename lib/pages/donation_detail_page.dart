@@ -5,7 +5,64 @@ import 'package:pet_app/widgets/card_adoption_item.dart';
 import 'package:pet_app/widgets/progress_bar.dart';
 
 class DonationDetailPage extends StatelessWidget {
-  const DonationDetailPage({super.key});
+  final int id;
+
+  DonationDetailPage({super.key, required this.id});
+
+  List<Map<String, dynamic>> donationDetail = [
+    {
+      'name': 'Roger',
+      'pathImage': './assets/donation/roger2.png',
+      'gender': 'Male',
+      'color': 'Black',
+      'breed': 'Persian',
+      'weight': '2kg',
+      'description':
+          'Roger diagnosa menderita penurunan fungsi ginjal dan memerlukan biaya pengobatan.',
+      'min': 'Rp 2.500.000',
+      'max': 'Rp 5.000.000',
+      'percentage': 50,
+    },
+    {
+      'name': 'Hachi',
+      'pathImage': './assets/donation/hachi.png',
+      'gender': 'Female',
+      'color': 'Brown',
+      'breed': 'Shiba Inu',
+      'weight': '2kg',
+      'description':
+          'Hachi diagnosa menderita penurunan fungsi ginjal dan memerlukan biaya pengobatan.',
+      'min': 'Rp 3.200.000',
+      'max': 'Rp 4.000.000',
+      'percentage': 80,
+    },
+    {
+      'name': 'Kit',
+      'pathImage': './assets/donation/kit.png',
+      'gender': 'Female',
+      'color': 'White',
+      'breed': 'Angora',
+      'weight': '0.6kg',
+      'description':
+          'Kit diagnosa menderita penurunan fungsi ginjal dan memerlukan biaya pengobatan.',
+      'min': 'Rp 2.100.000',
+      'max': 'Rp 3.000.000',
+      'percentage': 70,
+    },
+    {
+      'name': 'Molly',
+      'pathImage': './assets/donation/molly.png',
+      'gender': 'Female',
+      'color': 'Brown',
+      'breed': 'Persian',
+      'weight': '1kg',
+      'description':
+          'Molly diagnosa menderita penurunan fungsi ginjal dan memerlukan biaya pengobatan.',
+      'min': 'Rp 100.000',
+      'max': 'Rp 1.000.000',
+      'percentage': 10,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +96,7 @@ class DonationDetailPage extends StatelessWidget {
                 height: 300,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('./assets/donation/roger2.png'),
+                        image: AssetImage(donationDetail[id]['pathImage']),
                         fit: BoxFit.cover)),
               ),
               const SizedBox(height: 16),
@@ -62,7 +119,7 @@ class DonationDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Roger',
+                        donationDetail[id]['name'],
                         style: TextStyle(
                             color: AppColors.mainColor,
                             fontSize: 20,
@@ -71,11 +128,19 @@ class DonationDetailPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          CardAdoptionItem(category: "Gender", value: "Male"),
-                          CardAdoptionItem(category: "Color", value: "Yellow"),
-                          CardAdoptionItem(category: "Breed", value: "Persian"),
-                          CardAdoptionItem(category: "Weight", value: "2kg"),
+                        children: [
+                          CardAdoptionItem(
+                              category: "Gender",
+                              value: donationDetail[id]['gender']),
+                          CardAdoptionItem(
+                              category: "Color",
+                              value: donationDetail[id]['color']),
+                          CardAdoptionItem(
+                              category: "Breed",
+                              value: donationDetail[id]['breed']),
+                          CardAdoptionItem(
+                              category: "Weight",
+                              value: donationDetail[id]['weight']),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -94,7 +159,7 @@ class DonationDetailPage extends StatelessWidget {
                               )
                             ]),
                         child: Text(
-                          'Roger diagnosa menderita penurunan fungsi ginjal dan memerlukan biaya pengobatan.',
+                          donationDetail[id]['description'],
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.7)),
                         ),
@@ -118,11 +183,11 @@ class DonationDetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                '50%',
+                                '${donationDetail[id]['percentage']}%',
                                 style: TextStyle(color: Colors.black54),
                               ),
                               ProgressBar(
-                                  percentage: 50,
+                                  percentage: donationDetail[id]['percentage'],
                                   width: mediaQuery.size.width - 40),
                               const SizedBox(height: 10),
                               Row(
@@ -144,7 +209,7 @@ class DonationDetailPage extends StatelessWidget {
                                           )),
                                       const SizedBox(width: 10),
                                       Text(
-                                        'Rp 2.500.000',
+                                        donationDetail[id]['min'],
                                         style: const TextStyle(
                                             color: Colors.black54),
                                       )
@@ -165,7 +230,7 @@ class DonationDetailPage extends StatelessWidget {
                                           )),
                                       const SizedBox(width: 10),
                                       Text(
-                                        'Rp 5.000.000',
+                                        donationDetail[id]['max'],
                                         style: const TextStyle(
                                             color: Colors.black54),
                                       )
@@ -181,7 +246,9 @@ class DonationDetailPage extends StatelessWidget {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                context.pushNamed('donate-payment');
+                                context.pushNamed('donate-payment', params: {
+                                  'id': '$id',
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.secondaryColor,

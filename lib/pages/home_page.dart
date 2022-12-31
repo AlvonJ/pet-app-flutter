@@ -264,7 +264,9 @@ class HomePage extends StatelessWidget {
                         location: 'Batununggal (2.5 km)',
                         gender: Gender.male,
                         onTap: () {
-                          context.goNamed('adoption-detail');
+                          context.goNamed('adoption-detail', params: {
+                            'id': '0',
+                          });
                         },
                       ),
                       const SizedBox(width: 15),
@@ -274,7 +276,9 @@ class HomePage extends StatelessWidget {
                         location: 'Pasteur (5 km)',
                         gender: Gender.female,
                         onTap: () {
-                          context.goNamed('adoption-detail');
+                          context.goNamed('adoption-detail', params: {
+                            'id': '1',
+                          });
                         },
                       ),
                     ],

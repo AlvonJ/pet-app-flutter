@@ -5,7 +5,9 @@ import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 
 class DonationPaymentPage extends StatefulWidget {
-  const DonationPaymentPage({super.key});
+  final int id;
+
+  const DonationPaymentPage({super.key, required this.id});
 
   @override
   State<DonationPaymentPage> createState() => _DonationPaymentPageState();
@@ -14,6 +16,13 @@ class DonationPaymentPage extends StatefulWidget {
 class _DonationPaymentPageState extends State<DonationPaymentPage> {
   List<int> donateValue = [10000, 20000, 50000, 100000, 200000, 500000];
   int selectedDonateIndex = 0;
+
+  List<Map<String, dynamic>> donationPaymentDetail = [
+    {'name': 'Roger', 'min': 'Rp 2.500.000', 'max': 'Rp 5.000.000'},
+    {'name': 'Hachi', 'min': 'Rp 3.200.000', 'max': 'Rp 4.000.000'},
+    {'name': 'Kit', 'min': 'Rp 2.100.000', 'max': 'Rp 3.000.000'},
+    {'name': 'Molly', 'min': 'Rp 100.000', 'max': 'Rp 1.000.000'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,20 +83,20 @@ class _DonationPaymentPageState extends State<DonationPaymentPage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Roger',
+                                      donationPaymentDetail[widget.id]['name'],
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     Text(
-                                      'Rp 2.500.000',
+                                      donationPaymentDetail[widget.id]['min'],
                                       style: TextStyle(
                                           color: AppColors.mainColor,
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'Rp 5.000.000',
+                                      donationPaymentDetail[widget.id]['max'],
                                       style: TextStyle(
                                           color: AppColors.secondaryColor,
                                           fontSize: 17,

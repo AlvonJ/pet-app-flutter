@@ -7,7 +7,9 @@ import 'package:pet_app/widgets/search_bar.dart';
 import '../widgets/card_animal.dart';
 
 class AdoptionCategoryPage extends StatelessWidget {
-  const AdoptionCategoryPage({super.key});
+  final String pet;
+
+  const AdoptionCategoryPage({super.key, required this.pet});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,12 @@ class AdoptionCategoryPage extends StatelessWidget {
             elevation: 0,
             iconTheme: const IconThemeData(color: AppColors.secondaryColor),
             title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const Text('Dogs'),
+              Text(pet == 'dog' ? 'Dogs' : 'Cats'),
               const SizedBox(width: 10),
               SvgPicture.asset(
-                './assets/adoption/emoji-dog.svg',
+                pet == 'dog'
+                    ? './assets/adoption/emoji-dog.svg'
+                    : './assets/adoption/emoji-cat.svg',
                 width: 40,
               ),
               const SizedBox(
@@ -59,9 +63,13 @@ class AdoptionCategoryPage extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   right: 20, left: index == 0 ? 20 : 0),
                               decoration: BoxDecoration(
+                                  borderRadius: pet == 'dog'
+                                      ? BorderRadius.circular(0)
+                                      : BorderRadius.circular(16),
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          './assets/adoption/slider${index + 1}.png'),
+                                      image: AssetImage(pet == 'dog'
+                                          ? './assets/adoption/slider${index + 1}.png'
+                                          : './assets/adoption/slider${index + 4}.png'),
                                       fit: BoxFit.cover)),
                             )),
                   ),
@@ -77,35 +85,89 @@ class AdoptionCategoryPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 8,
-                    children: [
-                      CardAnimal(
-                        name: 'Max',
-                        pathImage: './assets/adoption/dog2.png',
-                        onTap: () => context.goNamed('adoption-detail'),
-                      ),
-                      CardAnimal(
-                        name: 'Roger',
-                        pathImage: './assets/adoption/dog3.png',
-                        onTap: () => context.goNamed('adoption-detail'),
-                      ),
-                      CardAnimal(
-                        name: 'Billy',
-                        pathImage: './assets/adoption/dog2.png',
-                        onTap: () => context.goNamed('adoption-detail'),
-                      ),
-                      CardAnimal(
-                        name: 'Milo',
-                        onTap: () => context.goNamed('adoption-detail'),
-                        pathImage: './assets/adoption/dog4.png',
-                      ),
-                    ],
-                  ),
-                )
+                pet == 'dog'
+                    ? SizedBox(
+                        width: double.infinity,
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: 8,
+                          children: [
+                            CardAnimal(
+                              name: 'Max',
+                              pathImage: './assets/adoption/dog2.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '2',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Roger',
+                              pathImage: './assets/adoption/dog3.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '0',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Billy',
+                              pathImage: './assets/adoption/dog5.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '3',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Milo',
+                              pathImage: './assets/adoption/dog4.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '4',
+                              }),
+                            ),
+                          ],
+                        ),
+                      )
+                    : SizedBox(
+                        width: double.infinity,
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: 8,
+                          children: [
+                            CardAnimal(
+                              name: 'Samantha',
+                              pathImage: './assets/home/cat2.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '1',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Daisy',
+                              pathImage: './assets/adoption/cat2.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '5',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Tiptoe',
+                              pathImage: './assets/adoption/cat3.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '6',
+                              }),
+                            ),
+                            CardAnimal(
+                              name: 'Peaches',
+                              pathImage: './assets/adoption/cat4.png',
+                              onTap: () =>
+                                  context.goNamed('adoption-detail', params: {
+                                'id': '7',
+                              }),
+                            ),
+                          ],
+                        ),
+                      )
               ])
             ],
           )),

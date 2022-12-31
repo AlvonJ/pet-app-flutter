@@ -99,7 +99,9 @@ class DonatePage extends StatelessWidget {
                       percentage: 50,
                       mediaQuery: mediaQuery,
                       onTap: () {
-                        context.pushNamed('donate-detail');
+                        context.pushNamed('donate-detail', params: {
+                          'id': '0',
+                        });
                       },
                     ),
                     const SizedBox(height: 14),
@@ -110,7 +112,9 @@ class DonatePage extends StatelessWidget {
                       percentage: 80,
                       mediaQuery: mediaQuery,
                       onTap: () {
-                        context.pushNamed('donate-detail');
+                        context.pushNamed('donate-detail', params: {
+                          'id': '1',
+                        });
                       },
                     ),
                     const SizedBox(height: 14),
@@ -121,7 +125,9 @@ class DonatePage extends StatelessWidget {
                       percentage: 70,
                       mediaQuery: mediaQuery,
                       onTap: () {
-                        context.pushNamed('donate-detail');
+                        context.pushNamed('donate-detail', params: {
+                          'id': '2',
+                        });
                       },
                     ),
                     const SizedBox(height: 14),
@@ -132,7 +138,9 @@ class DonatePage extends StatelessWidget {
                       percentage: 10,
                       mediaQuery: mediaQuery,
                       onTap: () {
-                        context.pushNamed('donate-detail');
+                        context.pushNamed('donate-detail', params: {
+                          'id': '3',
+                        });
                       },
                     ),
                   ],

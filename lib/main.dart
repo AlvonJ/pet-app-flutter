@@ -63,14 +63,16 @@ class MyApp extends StatelessWidget {
               builder: (context, state) => const AdoptionPage(),
               routes: [
                 GoRoute(
-                  path: 'detail',
+                  path: 'detail/:id',
                   name: 'adoption-detail',
-                  builder: (context, state) => const AdoptionDetailPage(),
+                  builder: (context, state) => AdoptionDetailPage(
+                      id: int.parse(state.params['id'] ?? '0')),
                 ),
                 GoRoute(
-                  path: 'category',
+                  path: 'category/:pet',
                   name: 'adoption-category',
-                  builder: (context, state) => const AdoptionCategoryPage(),
+                  builder: (context, state) =>
+                      AdoptionCategoryPage(pet: state.params['pet'] ?? 'dog'),
                 ),
               ]),
           GoRoute(
@@ -105,15 +107,16 @@ class MyApp extends StatelessWidget {
               builder: (context, state) => DonatePage(),
               routes: [
                 GoRoute(
-                    path: 'donate-detail',
+                    path: 'donate-detail/:id',
                     name: 'donate-detail',
-                    builder: (context, state) => const DonationDetailPage(),
+                    builder: (context, state) => DonationDetailPage(
+                        id: int.parse(state.params['id'] ?? '0')),
                     routes: [
                       GoRoute(
                         path: 'donate-payment',
                         name: 'donate-payment',
-                        builder: (context, state) =>
-                            const DonationPaymentPage(),
+                        builder: (context, state) => DonationPaymentPage(
+                            id: int.parse(state.params['id'] ?? '0')),
                       )
                     ]),
               ]),

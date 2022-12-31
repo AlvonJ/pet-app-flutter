@@ -5,7 +5,100 @@ import 'package:pet_app/widgets/card_adoption_item.dart';
 import 'package:pet_app/widgets/location_item.dart';
 
 class AdoptionDetailPage extends StatelessWidget {
-  const AdoptionDetailPage({super.key});
+  final int id;
+
+  AdoptionDetailPage({super.key, required this.id});
+
+  List<Map<String, dynamic>> adoptionDetail = [
+    {
+      'name': 'Roger',
+      'pathImage': './assets/adoption/dog.png',
+      'description':
+          'Roger adalah anjing hasil rescue yang jinak berusia 8 bulan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Batununggal (2.5 km)',
+      'gender': 'Male',
+      'color': 'Yellow',
+      'breed': 'Persian',
+      'weight': '2kg'
+    },
+    {
+      'name': 'Samantha',
+      'pathImage': './assets/home/cat2.png',
+      'description':
+          'Samantha adalah kucing hasil rescue yang jinak berusia 2 tahun. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Pasteur (5 km)',
+      'gender': 'Female',
+      'color': 'Brown',
+      'breed': 'British',
+      'weight': '1kg'
+    },
+    {
+      'name': 'Max',
+      'pathImage': './assets/adoption/dog2.png',
+      'description':
+          'Max adalah anjing hasil rescue yang jinak berusia 4 bulan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Mekar Rahayu (4 km)',
+      'gender': 'Male',
+      'color': 'Black',
+      'breed': 'Rottweller',
+      'weight': '1.5kg'
+    },
+    {
+      'name': 'Billy',
+      'pathImage': './assets/adoption/dog5.png',
+      'description':
+          'Billy adalah anjing hasil rescue yang jinak berusia 2 tahun. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Dago (10 km)',
+      'gender': 'Male',
+      'color': 'Black',
+      'breed': 'Poodie',
+      'weight': '1.2kg'
+    },
+    {
+      'name': 'Milo',
+      'pathImage': './assets/adoption/dog4.png',
+      'description':
+          'Milo adalah anjing hasil rescue yang jinak berusia 3 tahun. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Pasteur (3 km)',
+      'gender': 'Male',
+      'color': 'Brown',
+      'breed': 'Beagle',
+      'weight': '1.8kg'
+    },
+    {
+      'name': 'Daisy',
+      'pathImage': './assets/adoption/cat2.png',
+      'description':
+          'Daisy adalah kucing hasil rescue yang jinak berusia 1 tahun. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Ciwidey (6 km)',
+      'gender': 'Female',
+      'color': 'Grey',
+      'breed': 'Snowshoe',
+      'weight': '1kg'
+    },
+    {
+      'name': 'Tiptoe',
+      'pathImage': './assets/adoption/cat3.png',
+      'description':
+          'Tiptoe adalah kucing hasil rescue yang jinak berusia 2 bulan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Margahayu (1 km)',
+      'gender': 'Male',
+      'color': 'Yellow',
+      'breed': 'Calico',
+      'weight': '0.5kg'
+    },
+    {
+      'name': 'Peaches',
+      'pathImage': './assets/adoption/cat4.png',
+      'description':
+          'Peaches adalah kucing hasil rescue yang jinak berusia 2 tahun. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue.',
+      'location': 'Margahayu (1 km)',
+      'gender': 'Female',
+      'color': 'White',
+      'breed': 'Regdoll',
+      'weight': '2kg'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +119,9 @@ class AdoptionDetailPage extends StatelessWidget {
                 child: Container(
               width: double.maxFinite,
               height: 350,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('./assets/adoption/dog.png'),
+                      image: AssetImage(adoptionDetail[id]['pathImage']),
                       fit: BoxFit.cover)),
             )),
             Positioned(
@@ -54,33 +147,38 @@ class AdoptionDetailPage extends StatelessWidget {
                           horizontal: 20, vertical: 20),
                       child: ListView(
                         children: [
-                          const Text(
-                            'Roger',
-                            style: TextStyle(
+                          Text(
+                            adoptionDetail[id]['name'],
+                            style: const TextStyle(
                                 color: AppColors.mainColor,
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 5),
-                          const LocationItem(location: "Pasteur (5 km)"),
+                          LocationItem(
+                              location: adoptionDetail[id]['location']),
                           const SizedBox(height: 25),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               CardAdoptionItem(
-                                  category: "Gender", value: "Male"),
+                                  category: "Gender",
+                                  value: adoptionDetail[id]['gender']),
                               CardAdoptionItem(
-                                  category: "Color", value: "Yellow"),
+                                  category: "Color",
+                                  value: adoptionDetail[id]['color']),
                               CardAdoptionItem(
-                                  category: "Breed", value: "Persian"),
+                                  category: "Breed",
+                                  value: adoptionDetail[id]['breed']),
                               CardAdoptionItem(
-                                  category: "Weight", value: "2kg"),
+                                  category: "Weight",
+                                  value: adoptionDetail[id]['weight']),
                             ],
                           ),
                           const SizedBox(height: 25),
-                          const Text(
-                            "Roger adalah anjing hasil rescue yang jinak berusia 8 bulan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget faucibus risus. Suspendisse at commodo arcu. Morbi ac dictum odio, eu malesuada augue. ",
-                            style: TextStyle(fontSize: 14, height: 1.7),
+                          Text(
+                            adoptionDetail[id]['description'],
+                            style: const TextStyle(fontSize: 14, height: 1.7),
                           ),
                           const SizedBox(height: 25),
                           Row(

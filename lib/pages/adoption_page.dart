@@ -90,14 +90,20 @@ class AdoptionPage extends StatelessWidget {
                         text: "Dogs",
                         pathImage: './assets/adoption/dog2.png',
                         pathSvg: './assets/adoption/emoji-dog.svg',
-                        onTap: () => context.pushNamed('adoption-category'),
+                        onTap: () =>
+                            context.pushNamed('adoption-category', params: {
+                          'pet': 'dog',
+                        }),
                       ),
                       const SizedBox(width: 18),
                       CardCategory(
                         text: "Cats",
                         pathImage: './assets/adoption/cat.png',
                         pathSvg: './assets/adoption/emoji-cat.svg',
-                        onTap: () => context.pushNamed('adoption-category'),
+                        onTap: () =>
+                            context.pushNamed('adoption-category', params: {
+                          'pet': 'cat',
+                        }),
                       ),
                     ],
                   ),
@@ -122,7 +128,9 @@ class AdoptionPage extends StatelessWidget {
                         location: 'Batununggal (2.5 km)',
                         gender: Gender.male,
                         onTap: () {
-                          context.goNamed('adoption-detail');
+                          context.goNamed('adoption-detail', params: {
+                            'id': '0',
+                          });
                         },
                       ),
                       SizedBox(width: 15),
@@ -132,7 +140,9 @@ class AdoptionPage extends StatelessWidget {
                         location: 'Pasteur (5 km)',
                         gender: Gender.female,
                         onTap: () {
-                          context.goNamed('adoption-detail');
+                          context.goNamed('adoption-detail', params: {
+                            'id': '1',
+                          });
                         },
                       ),
                     ],
