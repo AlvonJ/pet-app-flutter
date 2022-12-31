@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final shopDetailProvider = StateProvider((ref) => {});
 
+final articleProvider = StateProvider((ref) => 0);
+
 final cartNotifierProvider = ChangeNotifierProvider<CartNotifier>(
   (ref) => CartNotifier(),
 );

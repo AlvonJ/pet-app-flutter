@@ -1,16 +1,71 @@
 import 'package:expand_widget/expand_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/provider/shop_provider.dart';
 import 'package:pet_app/widgets/sub_title.dart';
-
+import 'package:request_permission/request_permission.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../widgets/card_article.dart';
 
-class ArticleDetailPage extends StatelessWidget {
+class ArticleDetailPage extends ConsumerStatefulWidget {
   const ArticleDetailPage({super.key});
 
   @override
+  ConsumerState<ArticleDetailPage> createState() => _ArticleDetailPageState();
+}
+
+class _ArticleDetailPageState extends ConsumerState<ArticleDetailPage> {
+  List<Map<String, dynamic>> articleDetail = [
+    {
+      'title': "How To Adopt a Dog",
+      'videoUrl': "https://www.youtube.com/watch?v=jFMA5ggFsXU&t=1s",
+      'image': "./assets/Rectangle44.png",
+      'other': const CardArticle(
+        title: 'How To Adopt a Cat',
+        pathImage: './assets/home/cat.png',
+      ),
+      'next': 1
+    },
+    {
+      'title': "How To Adopt a Cat",
+      'videoUrl': "https://www.youtube.com/watch?v=jPhGpktH56Q",
+      'image': "./assets/home/cat.png",
+      'other': const CardArticle(
+        title: 'Animal Fest 23 Paskal',
+        pathImage: './assets/Rectangle44.png',
+      ),
+      'next': 2
+    },
+    {
+      'title': "Animal Fest 23 Paskal",
+      'videoUrl': "https://www.youtube.com/watch?v=MhO53BPKt8Q",
+      'image': "./assets/article/dancing.jpeg",
+      'other': const CardArticle(
+        title: 'How To Adopt a Dog',
+        pathImage: './assets/home/dog_glass.png',
+      ),
+      'next': 0
+    }
+  ];
+
+  late String videoUrl;
+  RequestPermission requestPermission = RequestPermission.instace;
+
+  late YoutubePlayerController _controller;
+
+  @override
   Widget build(BuildContext context) {
+    //riverpod
+    final int selected = ref.watch(articleProvider);
+    videoUrl = articleDetail[selected]['videoUrl'];
+    final videoID = YoutubePlayer.convertUrlToId(videoUrl);
+
+    _controller = YoutubePlayerController(
+        initialVideoId: videoID!,
+        flags: const YoutubePlayerFlags(autoPlay: false));
+
     final MediaQueryData mediaQuery = MediaQuery.of(context);
 
     return Container(
@@ -28,17 +83,33 @@ class ArticleDetailPage extends StatelessWidget {
                 child: Container(
               width: double.maxFinite,
               height: 350,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('./assets/Rectangle44.png'),
+                      image: AssetImage(articleDetail[selected]['image']),
                       fit: BoxFit.cover)),
             )),
             Positioned(
                 height: 350,
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width - 20,
                 child: IconButton(
                   icon: Image.asset('./assets/article/play.png'),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            YoutubePlayer(
+                              controller: _controller,
+                              showVideoProgressIndicator: true,
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                 )),
             Positioned(
               left: 0,
@@ -63,10 +134,10 @@ class ArticleDetailPage extends StatelessWidget {
                           horizontal: 20, vertical: 20),
                       child: ListView(
                         children: [
-                          const Center(
+                          Center(
                             child: Text(
-                              'How To Adopt A Dog',
-                              style: TextStyle(
+                              articleDetail[selected]['title'],
+                              style: const TextStyle(
                                   color: AppColors.mainColor,
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold),
@@ -89,12 +160,12 @@ class ArticleDetailPage extends StatelessWidget {
                           )),
                           Center(
                             child: InkWell(
-                              onTap: () => context.goNamed('article-detail'),
-                              child: const CardArticle(
-                                title: 'How To Adopt a Cat',
-                                pathImage: './assets/home/cat.png',
-                              ),
-                            ),
+                                onTap: () {
+                                  context.goNamed('article-detail');
+                                  ref.read(articleProvider.notifier).state =
+                                      articleDetail[selected]['next'];
+                                },
+                                child: articleDetail[selected]['other']),
                           )
                         ],
                       ),

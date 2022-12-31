@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/widgets/family_card.dart';
 import 'package:pet_app/widgets/search_bar.dart';
 
-class FamilyPage extends StatelessWidget {
+import '../provider/shop_provider.dart';
+
+class FamilyPage extends ConsumerWidget {
   const FamilyPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
@@ -67,7 +70,10 @@ class FamilyPage extends StatelessWidget {
                 const SearchBar(),
                 const SizedBox(height: 20),
                 InkWell(
-                  onTap: () => context.goNamed('article-detail'),
+                  onTap: () {
+                    context.goNamed('article-detail');
+                    ref.read(articleProvider.notifier).state = 0;
+                  },
                   child: const FamilyCard(
                     title: 'How To Adopt a Dog',
                     pathImage: './assets/home/dog_glass.png',
@@ -75,7 +81,10 @@ class FamilyPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () => context.goNamed('article-detail'),
+                  onTap: () {
+                    context.goNamed('article-detail');
+                    ref.read(articleProvider.notifier).state = 1;
+                  },
                   child: const FamilyCard(
                     title: 'How To Adopt a Cat',
                     pathImage: './assets/home/cat.png',
@@ -83,7 +92,10 @@ class FamilyPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () => context.goNamed('article-detail'),
+                  onTap: () {
+                    context.goNamed('article-detail');
+                    ref.read(articleProvider.notifier).state = 2;
+                  },
                   child: const FamilyCard(
                     title: 'Animal Fest 23 Paskal',
                     pathImage: './assets/Rectangle44.png',

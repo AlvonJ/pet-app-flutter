@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
+import 'package:pet_app/provider/shop_provider.dart';
 import 'package:pet_app/widgets/card_item.dart';
 import 'package:pet_app/widgets/donate_here.dart';
 import 'package:pet_app/widgets/list_item.dart';
@@ -11,11 +13,11 @@ import 'package:pet_app/widgets/card_article.dart';
 
 import '../widgets/search_bar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
@@ -166,28 +168,6 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: [
-                //     IconButton(
-                //       onPressed: () {},
-                //       iconSize: 30,
-                //       icon: const Icon(
-                //         Icons.notifications_outlined,
-                //         color: AppColors.secondaryColor,
-                //       ),
-                //     ),
-                //     const SizedBox(
-                //       width: 6,
-                //     ),
-                //     Container(
-                //       padding: EdgeInsets.all(10),
-                //       decoration: BoxDecoration(
-                //           shape: BoxShape.circle, color: Colors.grey[300]),
-                //       child: Icon(Icons.person_outline),
-                //     )
-                //   ],
-                // ),
                 const SizedBox(
                   height: 16,
                 ),
@@ -295,7 +275,10 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     InkWell(
-                      onTap: () => context.goNamed('article-detail'),
+                      onTap: () {
+                        context.goNamed('article-detail');
+                        ref.read(articleProvider.notifier).state = 0;
+                      },
                       child: const CardArticle(
                         title: 'How To Adopt a Dog',
                         pathImage: './assets/home/dog_glass.png',
@@ -303,7 +286,10 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     InkWell(
-                      onTap: () => context.goNamed('article-detail'),
+                      onTap: () {
+                        context.goNamed('article-detail');
+                        ref.read(articleProvider.notifier).state = 1;
+                      },
                       child: const CardArticle(
                         title: 'How To Adopt a Cat',
                         pathImage: './assets/home/cat.png',
