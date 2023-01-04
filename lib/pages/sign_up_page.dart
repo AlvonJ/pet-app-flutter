@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_app/models/app_colors.dart';
 import 'package:pet_app/models/utils.dart';
 
@@ -352,7 +353,21 @@ class _SignUpState extends State<SignUp> {
                                     backgroundColor: AppColors.mainColor,
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15, vertical: 20)),
-                                onPressed: () {},
+                                onPressed: () async {
+                                  GoogleSignInAccount? account =
+                                      await GoogleSignIn().signIn();
+
+                                  if (account != null) {
+                                    GoogleSignInAuthentication auth =
+                                        await account.authentication;
+                                    OAuthCredential credential =
+                                        GoogleAuthProvider.credential(
+                                            accessToken: auth.accessToken,
+                                            idToken: auth.idToken);
+                                    await FirebaseAuth.instance
+                                        .signInWithCredential(credential);
+                                  }
+                                },
                                 child: SvgPicture.network(
                                     "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg",
                                     color: Colors.white,
