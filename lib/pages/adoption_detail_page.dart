@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pet_app/models/app_colors.dart';
@@ -194,7 +195,10 @@ class AdoptionDetailPage extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     fixedSize: const Size(280, 60),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    context.pushNamed('form',
+                                        params: {'pet': 'dog', 'id': '0'});
+                                  },
                                   child: const Text("Fill Your Form")),
                             ],
                           ),
@@ -215,7 +219,149 @@ class AdoptionDetailPage extends StatelessWidget {
                                             BorderRadius.circular(20)),
                                     fixedSize: const Size(280, 60),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    AwesomeDialog(
+                                      context: context,
+                                      animType: AnimType.leftSlide,
+                                      headerAnimationLoop: false,
+                                      dialogType: DialogType.noHeader,
+                                      title: 'Contact Us',
+                                      body: Container(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text(
+                                              "Contact Us",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22,
+                                                  color: AppColors.mainColor),
+                                            ),
+                                            const Divider(
+                                              thickness: 2,
+                                              color: AppColors.secondaryColor,
+                                            ),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "Phone Number",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "08123456789",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 50),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "Email",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "pet.care@gmail.com",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "Twitter",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "@petCareTW",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 50),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "Telegram",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "@petCareTL",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 55),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Row(
+                                              children: const [
+                                                Text(
+                                                  "Instagram",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 12,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "@petCareIG",
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 55),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 5),
+                                          ],
+                                        ),
+                                      ),
+                                      btnOkOnPress: () {},
+                                      btnOkColor: AppColors.secondaryColor,
+                                      btnOkIcon: Icons.check_circle,
+                                    ).show();
+                                  },
                                   child: const Text(
                                     "Contact Us",
                                     style: TextStyle(

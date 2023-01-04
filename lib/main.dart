@@ -12,6 +12,7 @@ import 'package:pet_app/pages/donate_page.dart';
 import 'package:pet_app/pages/donation_detail_page.dart';
 import 'package:pet_app/pages/donation_payment_page.dart';
 import 'package:pet_app/pages/family_page.dart';
+import 'package:pet_app/pages/fill_form_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
 import 'package:pet_app/pages/profile_page.dart';
@@ -63,11 +64,17 @@ class MyApp extends StatelessWidget {
               builder: (context, state) => const AdoptionPage(),
               routes: [
                 GoRoute(
-                  path: 'detail/:id',
-                  name: 'adoption-detail',
-                  builder: (context, state) => AdoptionDetailPage(
-                      id: int.parse(state.params['id'] ?? '0')),
-                ),
+                    path: 'detail/:id',
+                    name: 'adoption-detail',
+                    builder: (context, state) => AdoptionDetailPage(
+                        id: int.parse(state.params['id'] ?? '0')),
+                    routes: [
+                      GoRoute(
+                        path: 'category/:pet/form',
+                        name: 'form',
+                        builder: (context, state) => const FillForm(),
+                      ),
+                    ]),
                 GoRoute(
                   path: 'category/:pet',
                   name: 'adoption-category',
