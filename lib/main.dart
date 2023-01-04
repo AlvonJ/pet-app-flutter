@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +16,7 @@ import 'package:pet_app/pages/family_page.dart';
 import 'package:pet_app/pages/fill_form_page.dart';
 import 'package:pet_app/pages/home_page.dart';
 import 'package:pet_app/pages/login_page.dart';
+import 'package:pet_app/pages/news_page.dart';
 import 'package:pet_app/pages/profile_page.dart';
 import 'package:pet_app/pages/setting_page.dart';
 import 'package:pet_app/pages/shop_detail_page.dart';
@@ -46,6 +48,11 @@ class MyApp extends StatelessWidget {
         path: '/home',
         name: 'home',
         builder: (context, state) => const HomePage(),
+        // redirect: (context, state) {
+        //   if (FirebaseAuth.instance.currentUser == null) return '/login';
+
+        //   return null;
+        // },
         routes: [
           GoRoute(
               path: 'family',
@@ -58,6 +65,11 @@ class MyApp extends StatelessWidget {
                   builder: (context, state) => const ArticleDetailPage(),
                 ),
               ]),
+          GoRoute(
+            path: 'news',
+            name: 'news',
+            builder: (context, state) => const NewsPage(),
+          ),
           GoRoute(
               path: 'adoption',
               name: 'adoption',
@@ -128,7 +140,7 @@ class MyApp extends StatelessWidget {
                     ]),
               ]),
         ]),
-  ], initialLocation: '/home/shop');
+  ], initialLocation: '/home');
 
   @override
   Widget build(BuildContext context) {

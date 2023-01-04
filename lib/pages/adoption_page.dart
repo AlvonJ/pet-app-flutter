@@ -42,7 +42,9 @@ class AdoptionPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed('news');
+                    },
                     iconSize: 30,
                     icon: const Icon(
                       Icons.notifications_outlined,
@@ -52,11 +54,15 @@ class AdoptionPage extends StatelessWidget {
                   const SizedBox(
                     width: 6,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.grey[300]),
-                    child: const Icon(Icons.person_outline),
+                  InkWell(
+                    onTap: () {
+                      context.pushNamed('profile');
+                    },
+                    child: const CircleAvatar(
+                      radius: 20,
+                      backgroundImage:
+                          AssetImage('./assets/profile/circle.png'),
+                    ),
                   )
                 ],
               ),

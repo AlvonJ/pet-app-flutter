@@ -54,7 +54,9 @@ class HomePage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushNamed('news');
+                    },
                     iconSize: 30,
                     icon: const Icon(
                       Icons.notifications_outlined,
@@ -64,15 +66,15 @@ class HomePage extends ConsumerWidget {
                   const SizedBox(
                     width: 6,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.grey[300]),
-                    child: IconButton(
-                        onPressed: () {
-                          context.pushNamed('profile');
-                        },
-                        icon: const Icon(Icons.person_outline)),
+                  InkWell(
+                    onTap: () {
+                      context.pushNamed('profile');
+                    },
+                    child: const CircleAvatar(
+                      radius: 20,
+                      backgroundImage:
+                          AssetImage('./assets/profile/circle.png'),
+                    ),
                   )
                 ],
               ),
@@ -136,7 +138,13 @@ class HomePage extends ConsumerWidget {
                       Navigator.of(context).pop();
                       context.pushNamed('family');
                     }),
-                ListItem(icon: Icons.newspaper, text: 'News', callback: () {}),
+                ListItem(
+                    icon: Icons.newspaper,
+                    text: 'News',
+                    callback: () {
+                      Navigator.of(context).pop();
+                      context.pushNamed('news');
+                    }),
                 ListItem(
                     icon: Icons.shopify,
                     text: 'Shop',
