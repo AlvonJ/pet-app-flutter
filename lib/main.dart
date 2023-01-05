@@ -48,11 +48,11 @@ class MyApp extends StatelessWidget {
         path: '/home',
         name: 'home',
         builder: (context, state) => const HomePage(),
-        // redirect: (context, state) {
-        //   if (FirebaseAuth.instance.currentUser == null) return '/login';
+        redirect: (context, state) {
+          if (FirebaseAuth.instance.currentUser == null) return '/login';
 
-        //   return null;
-        // },
+          return null;
+        },
         routes: [
           GoRoute(
               path: 'family',
@@ -140,7 +140,7 @@ class MyApp extends StatelessWidget {
                     ]),
               ]),
         ]),
-  ], initialLocation: '/home');
+  ], initialLocation: '/login');
 
   @override
   Widget build(BuildContext context) {
